@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script>
+  
+</script>
+
 <body>
     <h1>Connexion en tant qu'utilisateur</h1>
     <form action="/auth" method="post">
@@ -18,4 +23,5 @@
         <p style="color: red;"><?php echo session()->getFlashdata('error'); ?></p>
     <?php endif; ?>
 </body>
+
 </html>
