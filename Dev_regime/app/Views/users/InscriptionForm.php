@@ -15,13 +15,13 @@
     <form id="registerForm" action="/register" method="post" novalidate>
         <div class="form-group">
             <label for="username"> Nom d'utilisateur:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" placeholder="Entrez votre nom d'utilisateur">
             <div class="error-message" id="usernameError"></div>
         </div>
 
         <div class="form-group">
             <label for="email"> Email: </label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="example@gmail.com">
             <div class="error-message" id="emailError"></div>
         </div>
 
@@ -33,7 +33,7 @@
         <button type="submit"> S'inscrire </button>
 
     </form>
-
+    
 
     <?php if (session()->getFlashdata('error')): ?>
 

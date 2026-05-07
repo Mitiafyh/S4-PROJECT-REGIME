@@ -16,6 +16,12 @@ input{
     outline: none;
 }
 
+input:focus,
+input:focus-visible{
+    border-color: #2b7bff;
+    box-shadow: 0 0 0 3px rgba(43, 123, 255, 0.2);
+}
+
 input.is-valid{
     border-color: green;
     background-color: #f0fff0;
@@ -34,4 +40,19 @@ input.is-invalid{
 
 .success-message{
     color: green;
+}
+
+button{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2b7bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:focus,
+button:focus-visible{
+    outline: 3px solid rgba(43, 123, 255, 0.4);
+    outline-offset: 2px;
 }

@@ -6,6 +6,7 @@ use App\Models\LoginModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Validation\RegisterValidation;
+use App\Validation\LoginValidation;
 
 class LoginController extends BaseController
 {
@@ -24,8 +25,19 @@ class LoginController extends BaseController
 
     public function auth()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $data = [
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+        ];
+
+        $errors = LoginValidation::validate($data);
+
+        if (!empty($errors)) {
+            return redirect()->back()->with('errors', $errors)->withInput();
+        }
+
+        $email = $data['email'];
+        $password = $data['password'];
 
         $user = $this->loginModel->where('email', $email)->first();
 
@@ -42,12 +54,23 @@ class LoginController extends BaseController
 
     public function authAdmin()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $data = [
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+        ];
+
+        $errors = LoginValidation::validate($data);
+
+        if (!empty($errors)) {
+            return redirect()->back()->with('errors', $errors)->withInput();
+        }
+
+        $email = $data['email'];
+        $password = $data['password'];
 
         $user = $this->loginModel->where('email', $email)->first();
 
-        if (!$user || $password !== $user['password'] || $user['role'] !== 'admin') {
+        if (!$user || !password_verify($password, $user['password']) || $user['role'] !== 'admin') {
             return redirect()->back()->with('error', 'Email ou mot de passe incorrect ou vous n\'êtes pas un administrateur');
         }
         return view('Admin/dashboard');
