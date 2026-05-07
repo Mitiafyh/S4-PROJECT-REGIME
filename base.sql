@@ -7,6 +7,7 @@ CREATE TABLE User(
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     role varchar(50) NOT NULL,
+    modeGold BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Info_Sante(
