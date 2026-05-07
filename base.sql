@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS RegimeSante;
+USE RegimeSante;
+
 CREATE TABLE User(
     id int AUTO_INCREMENT PRIMARY KEY,
     username varchar(255) NOT NULL,
