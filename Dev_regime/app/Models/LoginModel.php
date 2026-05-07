@@ -16,7 +16,6 @@ class LoginModel extends Model
         'email',
         'password',
         'role',
-        'genre',
     ];
 
   

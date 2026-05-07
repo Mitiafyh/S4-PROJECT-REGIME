@@ -6,7 +6,7 @@ CREATE TABLE User(
     username varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
-    role varchar(50) NOT NULL,
+    role varchar(50) default 'user',
     modeGold BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -94,3 +94,4 @@ VALUES
 INSERT INTO User (username, email, password, role)
 VALUES
 ('admin', 'admin@local.com', 'adminpass', 'admin');
+

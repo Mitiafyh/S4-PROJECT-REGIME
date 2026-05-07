@@ -17,16 +17,13 @@ class LoginController extends BaseController
 
 
 
-    public function login(): string
-    {
-        return view('login');
-    }
+
 
 
 
     public function form(): string
     {
-        return view('LoginForm');
+        return view('users/LoginForm');
     }
 
     public function auth()
@@ -61,7 +58,7 @@ class LoginController extends BaseController
     }
     public function inscriptionForm(): string
     {
-        return view('InscriptionForm');
+        return view('users/InscriptionForm');
     }
     public function register()
     {
@@ -77,9 +74,8 @@ class LoginController extends BaseController
             'username' => $username,
             'email' => $email,
             'password' => $password,
-            'role' => 'user',
         ]);
 
-        return redirect()->to('/login')->with('success', 'Inscription réussie, vous pouvez maintenant vous connecter');
+        return view('accueil');
     }
 }
