@@ -29,7 +29,7 @@ CREATE TABLE Regime(
     pourcentage_viande float NOT NULL,
     pourcentage_poisson float NOT NULL,
     pourcentage_volaille float NOT NULL,
-    constatation float NOT NULL,// ex: + 0.2 kg par semaine ou - 0.2 kg par semaine
+    constatation float NOT NULL,
     prixParSemaine float NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -37,13 +37,12 @@ CREATE TABLE Regime(
 CREATE TABLE Activite_Physique(
     id int AUTO_INCREMENT PRIMARY KEY,
     type varchar(255) NOT NULL,
-    duree int NOT NULL, // en minutes
-    repetition int NOT NULL, // nombre de fois par semaine
-    depense_calorique int NOT NULL, // en calories
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    duree int NOT NULL,
+    repetition int NOT NULL,
+    depense_calorique int NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-avec 1Kcal => 0.00013 kg de poids perdu ou gagné
-avec 
+
 
 -- Donnees exemple pour une prise de masse
 INSERT INTO User (username, email, password, role, genre)
@@ -68,4 +67,4 @@ VALUES
 
 INSERT INTO User (username, email, password, role, genre)
 VALUES
-('admin', 'admin@local.com', 'adminpass', 'admin');
+('admin', 'admin@local.com', 'adminpass', 'admin', 'Homme');
