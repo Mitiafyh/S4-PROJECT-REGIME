@@ -66,4 +66,3 @@ VALUES
 INSERT INTO User (username, email, password, role, genre)
 VALUES
 ('admin', 'admin@local.com', 'adminpass', 'admin');
-
