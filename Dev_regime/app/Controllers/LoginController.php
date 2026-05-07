@@ -29,7 +29,7 @@ class LoginController extends BaseController
 
         $user = $this->loginModel->where('email', $email)->first();
 
-        if (!$user || $password !== $user['password']) {
+        if (!$user || !password_verify($password, $user['password'])) {
             return redirect()->back()->with('error', 'Email ou mot de passe incorrect');
         }
         return view('accueil');
