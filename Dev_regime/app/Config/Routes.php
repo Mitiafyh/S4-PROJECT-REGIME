@@ -8,11 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Mitia
-$routes->get('/', 'LoginController::login');
-
-
-
-
+$routes->get('/login', 'LoginController::form');
+$routes->post('/auth', 'LoginController::auth');
+$routes->get('/loginAdmin', 'LoginController::formAdmin');
+$routes->post('/authAdmin', 'LoginController::authAdmin');
+    
 
 
 
