@@ -268,7 +268,7 @@
                 Créez votre compte et démarrez votre parcours vers une meilleure santé. 
                 Découvrez votre régime personnalisé selon vos objectifs.
             </p>
-            <a href="/users" style="display: inline-block; background-color: rgba(221, 72, 20, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
+            <a href="users/infoSante" style="display: inline-block; background-color: rgba(221, 72, 20, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
                 Commencer Maintenant
             </a>
         </div>
