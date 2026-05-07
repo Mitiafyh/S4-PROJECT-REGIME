@@ -201,7 +201,7 @@
 <body>
 
 <!-- HEADER: MENU + HEROE SECTION -->
-<header>
+<!-- <header>
 
     <div class="menu">
         <ul>
@@ -231,66 +231,67 @@
 
     </div>
 
-</header>
+</header> -->
 
 <!-- CONTENT -->
 
 <section>
 
-    <h1>About this page</h1>
+    <h1>Programme de Régime Santé</h1>
 
-    <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+    <p style="font-size: 1.2rem; color: rgba(100, 100, 100, 1); line-height: 1.8; margin-bottom: 2rem;">
+        Bienvenue sur notre plateforme dédiée à votre bien-être et votre santé. 
+        Notre programme personnalisé de régime vous aide à atteindre vos objectifs de poids 
+        en fonction de vos besoins nutritionnels, votre morphologie et vos activités physiques.
+    </p>
 
-    <p>If you would like to edit this page you will find it located at:</p>
+    <p style="font-size: 1rem; color: rgba(120, 120, 120, 1); margin-bottom: 3rem;">
+        Commencez dès aujourd'hui votre transformation avec un plan nutritionnel adapté à vous, 
+        suivi par des experts en santé et nutrition.
+    </p>
 
-    <pre><code>app/Views/welcome_message.php</code></pre>
+    <!-- CARDS SECTION -->
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 3rem;">
 
-    <p>The corresponding controller for this page can be found at:</p>
+        <!-- CARD 1: Commencer le Programme -->
+        <div style="background-color: rgba(221, 72, 20, 0.05); border: 2px solid rgba(221, 72, 20, 0.3); border-radius: 15px; padding: 2.5rem; width: 100%; max-width: 400px; text-align: center; transition: all 300ms ease; cursor: pointer;" onclick="this.style.boxShadow='0 8px 24px rgba(221, 72, 20, 0.3)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' style="width: 80px; height: 80px; margin-bottom: 1.5rem; color: rgba(221, 72, 20, 1);" class="svg-stroke">
+                <rect x='32' y='96' width='64' height='368' rx='16' ry='16' />
+                <line x1='112' y1='224' x2='240' y2='224' />
+                <line x1='112' y1='400' x2='240' y2='400' />
+                <rect x='112' y='160' width='128' height='304' rx='16' ry='16' />
+                <rect x='256' y='48' width='96' height='416' rx='16' ry='16' />
+                <path d='M422.46,96.11l-40.4,4.25c-11.12,1.17-19.18,11.57-17.93,23.1l34.92,321.59c1.26,11.53,11.37,20,22.49,18.84l40.4-4.25c11.12-1.17,19.18-11.57,17.93-23.1L445,115C443.69,103.42,433.58,94.94,422.46,96.11Z' />
+            </svg>
+            <h2 style="color: rgba(221, 72, 20, 1); font-size: 1.8rem; margin-bottom: 1rem;">Commencer le Programme</h2>
+            <p style="color: rgba(80, 80, 80, 1); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Créez votre compte et démarrez votre parcours vers une meilleure santé. 
+                Découvrez votre régime personnalisé selon vos objectifs.
+            </p>
+            <a href="/users" style="display: inline-block; background-color: rgba(221, 72, 20, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
+                Commencer Maintenant
+            </a>
+        </div>
 
-    <pre><code>app/Controllers/Home.php</code></pre>
+        <!-- CARD 2: Connexion Administration -->
+        <div style="background-color: rgba(62, 62, 62, 0.05); border: 2px solid rgba(62, 62, 62, 0.3); border-radius: 15px; padding: 2.5rem; width: 100%; max-width: 400px; text-align: center; transition: all 300ms ease; cursor: pointer;" onclick="this.style.boxShadow='0 8px 24px rgba(62, 62, 62, 0.3)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)';">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' style="width: 80px; height: 80px; margin-bottom: 1.5rem; color: rgba(62, 62, 62, 1);" class="svg-stroke">
+                <circle cx='256' cy='160' r='80' />
+                <path d='M96,320c0-35.3 58.8-80 160-80s160,44.7 160,80v80H96V320Z' />
+            </svg>
+            <h2 style="color: rgba(62, 62, 62, 1); font-size: 1.8rem; margin-bottom: 1rem;">Espace Administration</h2>
+            <p style="color: rgba(80, 80, 80, 1); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+                Accédez à votre tableau de bord administrateur pour gérer les utilisateurs, 
+                les programmes et les données de santé.
+            </p>
+            <a href="/admin/login" style="display: inline-block; background-color: rgba(62, 62, 62, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
+                Se Connecter
+            </a>
+        </div>
+
+    </div>
 
 </section>
-
-<div class="further">
-
-    <section>
-
-        <h1>Go further</h1>
-
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect x='32' y='96' width='64' height='368' rx='16' ry='16' class="svg-stroke" /><line x1='112' y1='224' x2='240' y2='224' class="svg-stroke" /><line x1='112' y1='400' x2='240' y2='400' class="svg-stroke" /><rect x='112' y='160' width='128' height='304' rx='16' ry='16' class="svg-stroke" /><rect x='256' y='48' width='96' height='416' rx='16' ry='16' class="svg-stroke" /><path d='M422.46,96.11l-40.4,4.25c-11.12,1.17-19.18,11.57-17.93,23.1l34.92,321.59c1.26,11.53,11.37,20,22.49,18.84l40.4-4.25c11.12-1.17,19.18-11.57,17.93-23.1L445,115C443.69,103.42,433.58,94.94,422.46,96.11Z' class="svg-stroke"/></svg>
-            Learn
-        </h2>
-
-        <p>The User Guide contains an introduction, tutorial, a number of "how to"
-            guides, and then reference documentation for the components that make up
-            the framework. Check the <a href="https://codeigniter.com/user_guide/"
-            target="_blank">User Guide</a> !</p>
-
-        <h2>
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M431,320.6c-1-3.6,1.2-8.6,3.3-12.2a33.68,33.68,0,0,1,2.1-3.1A162,162,0,0,0,464,215c.3-92.2-77.5-167-173.7-167C206.4,48,136.4,105.1,120,180.9a160.7,160.7,0,0,0-3.7,34.2c0,92.3,74.8,169.1,171,169.1,15.3,0,35.9-4.6,47.2-7.7s22.5-7.2,25.4-8.3a26.44,26.44,0,0,1,9.3-1.7,26,26,0,0,1,10.1,2L436,388.6a13.52,13.52,0,0,0,3.9,1,8,8,0,0,0,8-8,12.85,12.85,0,0,0-.5-2.7Z' class="svg-stroke" /><path d='M66.46,232a146.23,146.23,0,0,0,6.39,152.67c2.31,3.49,3.61,6.19,3.21,8s-11.93,61.87-11.93,61.87a8,8,0,0,0,2.71,7.68A8.17,8.17,0,0,0,72,464a7.26,7.26,0,0,0,2.91-.6l56.21-22a15.7,15.7,0,0,1,12,.2c18.94,7.38,39.88,12,60.83,12A159.21,159.21,0,0,0,284,432.11' class="svg-stroke" /></svg>
-            Discuss
-        </h2>
-
-        <p>CodeIgniter is a community-developed open source project, with several
-             venues for the community members to gather and exchange ideas. View all
-             the threads on <a href="https://forum.codeigniter.com/"
-             target="_blank">CodeIgniter's forum</a>, or <a href="https://join.slack.com/t/codeigniterchat/shared_invite/zt-rl30zw00-obL1Hr1q1ATvkzVkFp8S0Q"
-             target="_blank">chat on Slack</a> !</p>
-
-        <h2>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><line x1='176' y1='48' x2='336' y2='48' class="svg-stroke" /><line x1='118' y1='304' x2='394' y2='304' class="svg-stroke" /><path d='M208,48v93.48a64.09,64.09,0,0,1-9.88,34.18L73.21,373.49C48.4,412.78,76.63,464,123.08,464H388.92c46.45,0,74.68-51.22,49.87-90.51L313.87,175.66A64.09,64.09,0,0,1,304,141.48V48' class="svg-stroke" /></svg>
-             Contribute
-        </h2>
-
-        <p>CodeIgniter is a community driven project and accepts contributions
-             of code and documentation from the community. Why not
-             <a href="https://codeigniter.com/contribute" target="_blank">
-             join us</a> ?</p>
-
-    </section>
-
-</div>
 
 <!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
 
