@@ -43,8 +43,12 @@ class UserController extends BaseController
     {
         $model = new \App\Models\ObjectifModel();
         $objectifs = $model->getAll();
+        $imc = session()->getFlashdata('imc');
 
-        return view('users/choix_objectif', ['objectifs' => $objectifs]);
+        return view('users/choix_objectif', [
+            'objectifs' => $objectifs,
+            'imc' => $imc,
+        ]);
     }
     public function choice()
     {

@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
@@ -23,7 +23,10 @@
 </head>
 <body>
 	<main class="container">
-		<h1>Choisissez votre objectif</h１>
+        <?php if (isset($imc) && $imc !== null): ?>
+            <h1>Votre IMC est de : <?= esc($imc) ?></h1>
+        <?php endif; ?>
+		<h1>Choisissez votre objectif</h1>
 		<p class="lead">Sélectionnez l'objectif que vous souhaitez atteindre.</p>
 
 		<form id="objectifForm" action="/users/choix_objectif/validate" method="post" novalidate>
@@ -31,9 +34,11 @@
 				<label for="objectif">Objectif</label>
 				<select id="objectif" name="objectif" required>
 					<option value="">Sélectionnez un objectif</option>
-				 <?php foreach ($objectifs as $obj): ?>
-				 <option value="<?= $obj['id'] ?>"><?= $obj['description'] ?></option>
-				 <?php endforeach ?>
+				 	<?php foreach ($objectifs as $obj): ?>
+				 	<?php $description = is_array($obj) ? ($obj['description'] ?? 'Objectif') : (is_object($obj) ? ($obj->description ?? 'Objectif') : 'Objectif'); ?>
+				 	<?php $id = is_array($obj) ? ($obj['id'] ?? '') : (is_object($obj) ? ($obj->id ?? '') : ''); ?>
+				 	<option value="<?= esc((string) $id) ?>"><?= esc((string) $description) ?></option>
+				 	<?php endforeach ?>
 			 </select>
 			 <div id="err-objectif" class="error" aria-live="polite"></div>
 		 </div>
