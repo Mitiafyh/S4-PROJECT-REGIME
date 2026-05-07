@@ -62,3 +62,8 @@ INSERT INTO Activite_Physique (type, duree, repetition, depense_calorique)
 VALUES
 ('Musculation hypertrophie', 60, 4, 320),
 ('Musculation prise de masse', 75, 5, 420);
+
+INSERT INTO User (username, email, password, role, genre)
+VALUES
+('admin', 'admin@local.com', 'adminpass', 'admin');
+
