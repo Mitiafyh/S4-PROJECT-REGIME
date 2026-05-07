@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="92" fill="#fff" stroke="#E5E7EB" stroke-width="4"/>
+  <path d="M 100 35 L 100 135" stroke="#C92A2A" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 70 110 L 100 140 L 130 110" stroke="#C92A2A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="55" y="150" width="90" height="8" rx="4" fill="#C92A2A" opacity="0.2"/>
+  <text x="100" y="70" font-size="16" font-weight="700" fill="#C92A2A" text-anchor="middle">PERTE</text>
+</svg>

@@ -31,6 +31,7 @@ CREATE TABLE Regime(
     pourcentage_volaille float NOT NULL,
     constatation float NOT NULL,
     prixParSemaine float NOT NULL,
+    image varchar(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -45,6 +46,7 @@ CREATE TABLE Activite_Physique(
 CREATE TABLE Objectif(
     id int AUTO_INCREMENT PRIMARY KEY,
     description varchar(255) NOT NULL,
+    image varchar(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Regime_Activite_User_Objectif(
@@ -62,10 +64,10 @@ CREATE TABLE Regime_Activite_User_Objectif(
 
 
 
-INSERT INTO Objectif (description) VALUES
-('Perte de poids'),
-('Prise de masse'),
-('Maintien du poids Avec IMC normal');
+INSERT INTO Objectif (description, image) VALUES
+('Perte de poids', 'perte-poids.svg'),
+('Prise de masse', 'prise-masse.svg'),
+('Maintien du poids Avec IMC normal', 'maintien-poids.svg');
 
 -- Donnees exemple pour une prise de masse
 INSERT INTO User (username, email, password, role)
@@ -78,10 +80,10 @@ VALUES
 (1, 72.5, 1.78, 'Homme'),
 (2, 61.0, 1.68, 'Femme');
 
-INSERT INTO Regime (pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine)
+INSERT INTO Regime (pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
 VALUES
-(40, 15, 45, 0.35, 72.00),
-(35, 20, 45, 0.45, 68.50);
+(40, 15, 45, 0.35, 72.00, 'regime-1.svg'),
+(35, 20, 45, 0.45, 68.50, 'regime-2.svg');
 
 INSERT INTO Activite_Physique (type, duree, repetition, depense_calorique)
 VALUES

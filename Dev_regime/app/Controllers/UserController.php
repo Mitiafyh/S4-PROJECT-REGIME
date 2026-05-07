@@ -14,7 +14,6 @@ class UserController extends BaseController
         $taille = $this->request->getPost('taille');
         $genre = $this->request->getPost('genre');
 
-        // Validation simple côté serveur
         $errors = [];
         if (!is_numeric($poids) || $poids < 20 || $poids > 500) {
             $errors[] = 'Poids invalide.';
@@ -34,7 +33,6 @@ class UserController extends BaseController
         $session->set('taille', $taille);
         $session->set('genre', $genre);
 
-        // Calcul de l'IMC
         $imc = round($poids / ($taille * $taille), 1);
 
         return redirect()->to('/users/choix_objectif')->with('imc', $imc);
@@ -50,8 +48,15 @@ class UserController extends BaseController
             'imc' => $imc,
         ]);
     }
-    public function choice()
+    public function validateChoixObjectif()
     {
-        return view('users/register');
+        $objectifId = $this->request->getPost('objectif');
+        if (empty($objectifId)) {
+            return redirect()->back()->with('error', 'Veuillez sélectionner un objectif.');
+        }
+            $session = session();
+            $session->set('objectif_id', $objectifId);
+
+        return view('users/login');
     }
 }

@@ -13,3 +13,42 @@ in APPPATH/Views/users/choix_objectif.php on line 26.
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 12 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-07 14:13:41 --> ParseError: syntax error, unexpected token "var"
+[Method: GET, Route: users/choix_objectif]
+in APPPATH/Views/users/choix_objectif.php on line 125.
+ 1 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/UserController.php(46): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-07 14:13:46 --> ParseError: syntax error, unexpected token "var"
+[Method: GET, Route: users/choix_objectif]
+in APPPATH/Views/users/choix_objectif.php on line 125.
+ 1 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/UserController.php(46): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-07 14:24:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "users/login.php"
+[Method: POST, Route: users/choix_objectif/validate]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/UserController.php(60): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->validateChoixObjectif()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')

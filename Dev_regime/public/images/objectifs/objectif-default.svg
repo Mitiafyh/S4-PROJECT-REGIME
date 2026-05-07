@@ -1,0 +1,6 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="92" fill="#fff" stroke="#E5E7EB" stroke-width="4"/>
+  <circle cx="100" cy="100" r="50" fill="none" stroke="#DD4814" stroke-width="6"/>
+  <circle cx="100" cy="100" r="10" fill="#DD4814"/>
+  <text x="100" y="150" font-size="14" font-weight="700" fill="#DD4814" text-anchor="middle">OBJECTIF</text>
+</svg>
