@@ -284,7 +284,7 @@
                 Accédez à votre tableau de bord administrateur pour gérer les utilisateurs, 
                 les programmes et les données de santé.
             </p>
-            <a href="/admin/login" style="display: inline-block; background-color: rgba(62, 62, 62, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
+            <a href="/loginAdmin" style="display: inline-block; background-color: rgba(62, 62, 62, 1); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background-color 300ms ease;">
                 Se Connecter
             </a>
         </div>
