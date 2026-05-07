@@ -1,36 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
-<script>
-      function MaFonction() {
-        var password = document.getElementById('password').value;
-        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-        if (!regex.test(password)) {
-            alert('Le mot de passe doit comporter au moins 8 caractères, inclure au moins une lettre majuscule, une lettre minuscule et un chiffre.');
-            return false;
-        }
-    }
-</script>
+
 <body>
+
     <h1>Inscrivez-vous</h1>
-    <form action="/register" method="post">
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" onclick="MaFonction()" value="S'inscrire">
+
+    <form id="registerForm" action="/register" method="post" novalidate>
+        <div class="form-group">
+            <label for="username"> Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username">
+            <div class="error-message" id="usernameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email"> Email: </label>
+            <input type="email" id="email" name="email">
+            <div class="error-message" id="emailError"></div>
+        </div>
+
+        <div class="form-group"> <label for="password"> Mot de passe: </label>
+            <input type="password" id="password" name="password">
+            <div class="error-message" id="passwordError"></div>
+        </div>
+
+        <button type="submit"> S'inscrire </button>
+
     </form>
+
+
     <?php if (session()->getFlashdata('error')): ?>
-        <p style="color: red;"><?php echo session()->getFlashdata('error'); ?></p>
+
+        <p style="color:red;">
+
+            <?= session()->getFlashdata('error') ?>
+
+        </p>
+
     <?php endif; ?>
+
+
     <?php if (session()->getFlashdata('success')): ?>
-        <p style="color: green;"><?php echo session()->getFlashdata('success'); ?></p>
+
+        <p style="color:green;">
+
+            <?= session()->getFlashdata('success') ?>
+
+        </p>
+
     <?php endif; ?>
+
+
+    <script
+        src="<?= base_url('assets/js/validation-register.js') ?>">
+    </script>
+
 </body>
+
 </html>

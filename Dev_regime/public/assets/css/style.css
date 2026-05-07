@@ -1,0 +1,37 @@
+body{
+    font-family: Arial;
+    padding: 30px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+input.is-valid{
+    border-color: green;
+    background-color: #f0fff0;
+}
+
+input.is-invalid{
+    border-color: red;
+    background-color: #fff0f0;
+}
+
+.error-message{
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success-message{
+    color: green;
+}

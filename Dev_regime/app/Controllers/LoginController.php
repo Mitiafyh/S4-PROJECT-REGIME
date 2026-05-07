@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\LoginModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use App\Validation\RegisterValidation;
 
 class LoginController extends BaseController
 {
@@ -14,11 +15,6 @@ class LoginController extends BaseController
     {
         $this->loginModel = new LoginModel();
     }
-
-
-
-
-
 
 
     public function form(): string
@@ -60,22 +56,29 @@ class LoginController extends BaseController
     {
         return view('users/InscriptionForm');
     }
+
+
     public function register()
     {
-        $username = $this->request->getPost('username');
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password')
+        ];
 
-        if ($this->loginModel->where('email', $email)->first()) {
-            return redirect()->back()->with('error', 'Cet email est déjà utilisé');
+        $errors = RegisterValidation::validate($data);
+
+        if (!empty($errors)) {
+            return redirect()->back()->with('error', 'Validation incorrecte');
         }
 
-        $this->loginModel->save([
-            'username' => $username,
-            'email' => $email,
-            'password' => $password,
+        $passwordHash =
+            password_hash($data['password'], PASSWORD_DEFAULT);
+        $this->loginModel->insert([
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => $passwordHash
         ]);
-
         return view('accueil');
     }
 }
