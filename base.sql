@@ -28,6 +28,7 @@ CREATE TABLE Codes(
 );
 CREATE TABLE Regime(
     id int AUTO_INCREMENT PRIMARY KEY,
+    nom varchar(255) NOT NULL,
     pourcentage_viande float NOT NULL,
     pourcentage_poisson float NOT NULL,
     pourcentage_volaille float NOT NULL,
@@ -82,10 +83,10 @@ VALUES
 (1, 72.5, 1.78, 'Homme'),
 (2, 61.0, 1.68, 'Femme');
 
-INSERT INTO Regime (pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
+INSERT INTO Regime (nom, pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
 VALUES
-(40, 15, 45, 0.35, 72.00, 'regime-1.svg'),
-(35, 20, 45, 0.45, 68.50, 'regime-2.svg');
+('Regime 1', 40, 15, 45, 0.35, 72.00, 'regime-1.svg'),
+('Regime 2', 35, 20, 45, 0.45, 68.50, 'regime-2.svg');
 
 INSERT INTO Activite_Physique (type, duree, repetition, depense_calorique)
 VALUES

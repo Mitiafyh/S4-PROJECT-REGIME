@@ -8,6 +8,7 @@ class RegimeModel extends Model
     protected $table = 'Regime';
     protected $primaryKey = 'id';
     protected $allowedFields = [
+        'nom',
         'pourcentage_viande',
         'pourcentage_poisson',
         'pourcentage_volaille',

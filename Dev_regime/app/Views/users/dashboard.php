@@ -198,12 +198,12 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                                     <div class="relative aspect-[4/3] rounded-3xl overflow-hidden mb-5 bg-stone-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
                                         <img src="<?= esc(!empty($regime['image']) ? base_url('assets/images/' . $regime['image']) : 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80') ?>" alt="Régime" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                                         <div class="absolute top-4 right-4 px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide text-stone-800 shadow-sm">
-                                            <?= esc((string) round((float) ($regime['constatation'] ?? 0), 2)) ?> constatation
+                                            <?= esc((string) round((float) ($regime['constatation'] ?? 0), 2)) ?> kg/semaine
                                         </div>
                                     </div>
                                     <div class="px-2 flex-1 flex flex-col">
                                         <div class="flex justify-between items-start mb-2">
-                                            <h4 class="text-xl font-medium text-stone-800 group-hover:text-sauge transition-colors">Régime #<?= esc((string) $regime['id']) ?></h4>
+                                            <h4 class="text-xl font-medium text-stone-800 group-hover:text-sauge transition-colors"><?= esc((string) ($regime['nom'] ?? ('Régime #' . $regime['id']))) ?></h4>
                                             <span class="text-lg font-light text-stone-600"><?= number_format((float) ($regime['prixParSemaine'] ?? 0), 2, '.', '') ?>€</span>
                                         </div>
                                         <p class="text-stone-500 text-sm line-clamp-2 leading-relaxed mb-5 flex-1">
