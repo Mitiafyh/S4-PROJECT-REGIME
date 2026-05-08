@@ -16,9 +16,9 @@ $routes->get('/inscription', 'LoginController::inscriptionForm');
 $routes->post('/register', 'LoginController::register');
 $routes->get('/Regime', 'RegimeController::index');
 $routes->get('/ajoutRegime', 'RegimeController::ajoutForm');
-$routes->get('/modifierRegime/(:num)', 'RegimeController::modifier/$1');
+$routes->post('/modifierRegime/(:num)', 'RegimeController::modifier/$1');
 $routes->get('/supprimerRegime/(:num)', 'RegimeController::supprimer/$1');
-
+$routes->get('/insertRegime', 'RegimeController::insert');    
 
 
 
