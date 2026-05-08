@@ -33,6 +33,9 @@
     <?php endif; ?>
 
     <script src="<?= base_url('assets/js/validation-login.js') ?>"></script>
+
+        <a href="/inscription">Pas encore de compte ? Inscrivez-vous</a>
+
 </body>
 
 </html>
