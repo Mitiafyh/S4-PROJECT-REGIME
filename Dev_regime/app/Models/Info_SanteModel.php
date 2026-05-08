@@ -7,7 +7,12 @@ class Info_SanteModel extends Model
 {
 	protected $table = 'Info_Sante';
 	protected $primaryKey = 'id';
-	protected $allowedFields = [];
+    protected $allowedFields = [
+        'user_id',
+        'poids',
+        'taille',
+        'genre',
+    ];
 
 	/**
 	 * Retourne tous les objectifs

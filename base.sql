@@ -8,6 +8,7 @@ CREATE TABLE User(
     password varchar(255) NOT NULL,
     role varchar(50) default 'user',
     modeGold BOOLEAN DEFAULT FALSE,
+    argent float DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Info_Sante(
