@@ -44,6 +44,7 @@ CREATE TABLE Activite_Physique(
     duree int NOT NULL,
     repetition int NOT NULL,
     depense_calorique int NOT NULL,
+    image varchar(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE Objectif(

@@ -19,11 +19,11 @@ $routes->get('/ajoutRegime', 'RegimeController::ajoutForm');
 $routes->post('/modifierRegime/(:num)', 'RegimeController::modifier/$1');
 $routes->get('/supprimerRegime/(:num)', 'RegimeController::supprimer/$1');
 $routes->post('/insertRegime', 'RegimeController::insert');    
-
-
-
-
-
+$routes->get('/gestionSport', 'SportController::index');
+$routes->get('/ajoutSport', 'SportController::ajoutForm');
+$routes->post('/modifierSport/(:num)', 'SportController::modifier/$1');
+$routes->get('/supprimerSport/(:num)', 'SportController::supprimer/$1');
+$routes->post('/insertSport', 'SportController::insert');
 
 
 

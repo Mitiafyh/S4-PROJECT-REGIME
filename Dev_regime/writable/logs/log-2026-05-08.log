@@ -1081,3 +1081,153 @@ in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
 14 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 15 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 16 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:32:03 --> ErrorException: Undefined array key "image"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 44.
+ 1 APPPATH/Views/Admin/GestionSport.php(44): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:02 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:04 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:04 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:05 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:05 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:06 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:06 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:07 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 18:39:07 --> ErrorException: Undefined array key "prixParSemaine"
+[Method: GET, Route: gestionSport]
+in APPPATH/Views/Admin/GestionSport.php on line 52.
+ 1 APPPATH/Views/Admin/GestionSport.php(52): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/Admin/GestionSport.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/SportController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\SportController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
