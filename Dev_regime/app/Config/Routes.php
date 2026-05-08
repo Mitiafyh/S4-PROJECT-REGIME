@@ -18,7 +18,7 @@ $routes->get('/Regime', 'RegimeController::index');
 $routes->get('/ajoutRegime', 'RegimeController::ajoutForm');
 $routes->post('/modifierRegime/(:num)', 'RegimeController::modifier/$1');
 $routes->get('/supprimerRegime/(:num)', 'RegimeController::supprimer/$1');
-$routes->get('/insertRegime', 'RegimeController::insert');    
+$routes->post('/insertRegime', 'RegimeController::insert');    
 
 
 

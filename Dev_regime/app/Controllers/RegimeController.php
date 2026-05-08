@@ -39,7 +39,7 @@ class RegimeController extends BaseController
             $data['image'] = $newName;
         }
 
-        $model->update($id, $data);
+        $model->modifierRegime($id, $data);
 
         return redirect()->to('/Regime');
     }
@@ -62,7 +62,7 @@ class RegimeController extends BaseController
             $data['image'] = $newName;
         }
 
-        $model->insert($data);
+        $model->ajouterRegime($data);
 
         return redirect()->to('/Regime');
     }

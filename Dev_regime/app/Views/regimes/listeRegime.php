@@ -27,6 +27,7 @@
                         <thead class="text-xs text-stone-500 uppercase bg-stone-950">
                             <tr>
                                 <th class="px-6 py-4">Image</th>
+                                <th class="px-6 py-4">Nom</th>
                                 <th class="px-6 py-4">Viande</th>
                                 <th class="px-6 py-4">Poisson</th>
                                 <th class="px-6 py-4">Volaille</th>
@@ -43,6 +44,7 @@
                                         <img src="<?= esc(base_url('images/regimes/' . $regime['image'])) ?>" class="w-full h-full object-cover" alt="Image du regime">
                                     </div>
                                 </td>
+                                <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['nom']) ?></td>
                                 <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['pourcentage_viande']) ?>%</td>
                                 <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['pourcentage_poisson']) ?>%</td>
                                 <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['pourcentage_volaille']) ?>%</td>
@@ -53,6 +55,7 @@
                                         class="text-stone-400 hover:text-white px-2 py-1 js-edit-btn"
                                         type="button"
                                         data-id="<?= esc((string) $regime['id']) ?>"
+                                        data-nom="<?= esc((string) ($regime['nom'] ?? '')) ?>"
                                         data-viande="<?= esc((string) $regime['pourcentage_viande']) ?>"
                                         data-poisson="<?= esc((string) $regime['pourcentage_poisson']) ?>"
                                         data-volaille="<?= esc((string) $regime['pourcentage_volaille']) ?>"
@@ -87,16 +90,20 @@
                 <?= csrf_field() ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Nom du regime</label>
+                        <input type="text" name="nom" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                    </div>
+                    <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage viande</label>
-                        <input type="number" name="Pourcentage_viande" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_viande" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage poisson</label>
-                        <input type="number" name="Pourcentage_poisson" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_poisson" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage volaille</label>
-                        <input type="number" name="Pourcentage_volaille" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_volaille" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Prix par semaine</label>
@@ -132,16 +139,20 @@
                 <?= csrf_field() ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Nom du regime</label>
+                        <input type="text" name="nom" id="edit_nom" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                    </div>
+                    <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage viande</label>
-                        <input type="number" name="Pourcentage_viande" id="edit_viande" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_viande" id="edit_viande" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage poisson</label>
-                        <input type="number" name="Pourcentage_poisson" id="edit_poisson" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_poisson" id="edit_poisson" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage volaille</label>
-                        <input type="number" name="Pourcentage_volaille" id="edit_volaille" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <input type="number" name="pourcentage_volaille" id="edit_volaille" required min="0" max="100" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Prix par semaine</label>
@@ -192,6 +203,7 @@
 
         function openEditModal(data) {
             editForm.action = `/modifierRegime/${data.id}`;
+            document.getElementById('edit_nom').value = data.nom;
             document.getElementById('edit_viande').value = data.viande;
             document.getElementById('edit_poisson').value = data.poisson;
             document.getElementById('edit_volaille').value = data.volaille;
@@ -220,6 +232,7 @@
             button.addEventListener('click', () => {
                 openEditModal({
                     id: button.dataset.id,
+                    nom: button.dataset.nom || '',
                     viande: button.dataset.viande,
                     poisson: button.dataset.poisson,
                     volaille: button.dataset.volaille,

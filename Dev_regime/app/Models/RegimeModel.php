@@ -63,5 +63,12 @@ class RegimeModel extends Model
     {
         return $this->find($id);
     }
-    
+    public function ajouterRegime($data)
+    {
+        return $this->insert($data);
+    }
+    public function modifierRegime($id, $data)
+    {
+        return $this->update($id, $data);
+    }
 }
