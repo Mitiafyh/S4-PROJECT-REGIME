@@ -7,6 +7,9 @@ class RegimeModel extends Model
 {
     protected $table = 'Regime';
     protected $primaryKey = 'id';
+    protected $returnType = 'array';
+    protected $useTimestamps = false;
+
     protected $allowedFields = [
         'nom',
         'pourcentage_viande',
@@ -14,8 +17,14 @@ class RegimeModel extends Model
         'pourcentage_volaille',
         'constatation',
         'prixParSemaine',
-        'image'
+        'image',
     ];
+
+    public function getAll(): array
+    {
+        return $this->findAll();
+    }
+
     public function getRegimesByObjectifId($objectifId, $userId = null)
     {
         if ($objectifId == 1) {
