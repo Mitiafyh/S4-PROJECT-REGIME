@@ -58,4 +58,10 @@ class RegimeModel extends Model
 
         return $this->findAll();
     }
+
+    public function getRegimeById($id)
+    {
+        return $this->find($id);
+    }
+    
 }

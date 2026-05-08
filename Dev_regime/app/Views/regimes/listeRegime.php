@@ -15,6 +15,7 @@
         <th>Constatation</th>
         <th>Prix par Semaine</th>
         <th>Image</th>
+        <th>Actions</th>
     </tr>
     <a href="/ajoutRegime">Ajouter un régime</a>
     <?php foreach ($regimes as $regime): ?>
@@ -24,7 +25,11 @@
         <td><?= $regime['pourcentage_volaille'] ?>%</td>
         <td><?= $regime['constatation'] ?></td>
         <td><?= $regime['prixParSemaine'] ?>€</td>
-        <td><img src="<?= base_url('uploads/' . $regime['image']) ?>" alt="Image du régime" width="100"></td>
+        <td><img src="<?= esc(base_url('images/regimes/' . $regime['image'])) ?>" alt="Image du régime" width="100"></td>
+        <td>
+            <a href="/modifierRegime/<?= $regime['id'] ?>">Modifier</a>
+            <a href="/supprimerRegime/<?= $regime['id'] ?>">Supprimer</a>
+        </td>
     </tr>
     <?php endforeach; ?>
   </table>

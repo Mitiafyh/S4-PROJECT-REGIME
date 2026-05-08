@@ -17,4 +17,24 @@ class RegimeController extends BaseController
     {
         return view('regimes/ajoutRegime');
     }
+    public function modifier($id)
+    {
+        $model = new \App\Models\RegimeModel();
+        $regime = $model->find($id);
+
+        if (!$regime) {
+            return redirect()->to('/Regime')->with('error', 'Régime non trouvé.');
+        }
+
+        return view('regimes/modifierRegime', [
+            'regime' => $regime
+        ]);
+    }
+
+    public function supprimer($id)
+    {
+        $model = new \App\Models\RegimeModel();
+        $model->delete($id);
+        return redirect()->to('/Regime');
+    }
 }
