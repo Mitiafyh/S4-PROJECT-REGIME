@@ -33,4 +33,5 @@ $routes->group('users', function($routes) {
     $routes->post('infoSante/validate', 'UserController::validateInfoSante');
     $routes->get('choix_objectif', 'UserController::choix_objectif');
     $routes->post('choix_objectif/validate', 'UserController::validateChoixObjectif');
+    $routes->get('dashboard', 'DashboardController::index');
 });

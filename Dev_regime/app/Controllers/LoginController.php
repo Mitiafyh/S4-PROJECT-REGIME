@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\LoginModel;
+use App\Models\Info_SanteModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Validation\RegisterValidation;
@@ -44,7 +45,8 @@ class LoginController extends BaseController
         if (!$user || !password_verify($password, $user['password'])) {
             return redirect()->back()->with('error', 'Email ou mot de passe incorrect');
         }
-        return view('accueil');
+        session()->set('user_id', $user['id']);
+        return redirect()->to('/users/dashboard');
     }
 
     public function formAdmin(): string
@@ -72,7 +74,8 @@ class LoginController extends BaseController
         if (!$user || $password !== $user['password'] || $user['role'] !== 'admin') {
             return redirect()->back()->with('error', 'Email ou mot de passe incorrect ou vous n\'êtes pas un administrateur');
         }
-        return view('accueil');
+        session()->set('user_id', $user['id']);
+        return redirect()->to('/admin/dashboard');
     }
     public function inscriptionForm(): string
     {
@@ -101,11 +104,9 @@ class LoginController extends BaseController
             'email' => $data['email'],
             'password' => $passwordHash
         ]);
-        $model = new \App\Models\Info_SanteModel();
+        $model = new Info_SanteModel();
         $session = session();
         $session->set('user_id', $this->loginModel->getInsertID());
-        
-
 
         $model->saveInfoSante([
         'user_id' => $this->loginModel->getInsertID(),
@@ -113,6 +114,6 @@ class LoginController extends BaseController
         'taille' => $session->get('taille'),
         'genre' => $session->get('genre')
         ]);
-        return view('accueil');
+        return redirect()->to('/users/dashboard')->with('success', 'Inscription réussie');
     }
 }
