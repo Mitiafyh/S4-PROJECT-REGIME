@@ -20,5 +20,17 @@ class UserModel extends Model
     {
         return $this->find($id);
     }
-    
+    public function activeGold($userId)
+    {
+        $user = $this->find($userId);
+        if ($user && !$user['modeGold'] && $user['argent'] >= 10000) {
+            $this->update($userId, [
+                'modeGold' => true,
+                'argent' => $user['argent'] - 10000
+            ]);
+            return true;
+        }
+        return false;
+    }
+
 }

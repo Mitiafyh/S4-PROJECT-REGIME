@@ -34,4 +34,12 @@ $routes->group('users', function($routes) {
     $routes->get('choix_objectif', 'UserController::choix_objectif');
     $routes->post('choix_objectif/validate', 'UserController::validateChoixObjectif');
     $routes->get('dashboard', 'DashboardController::index');
+    $routes->get('program', 'ProgramController::index');
+    $routes->post('program/buy', 'ProgramController::buyRegime');
+    $routes->get('wallet', 'WalletController::index');
+    $routes->post('wallet/promo', 'WalletController::applyPromoCode');
+    $routes->post('wallet/gold', 'WalletController::activateGold');
+    $routes->get('activities', 'ActivitiesController::index');
+    $routes->get('objectives', 'ObjectivesController::index');
+    $routes->post('objectives/save', 'ObjectivesController::saveObjective');
 });

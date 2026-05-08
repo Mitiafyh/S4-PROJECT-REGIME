@@ -48,19 +48,19 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                     Tableau de bord
                 </a>
-                <a href="<?= site_url('users/choix_objectif') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                <a href="<?= site_url('users/objectives') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                     Mes objectifs
                 </a>
-                <a href="programs.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                <a href="<?= site_url('users/program') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
                     Programmes
                 </a>
-                <a href="activities.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                <a href="<?= site_url('users/activities') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     Activités
                 </a>
-                <a href="wallet.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                <a href="<?= site_url('users/wallet') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
                     Portefeuille
                 </a>
@@ -99,7 +99,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     
                     <!-- IMC Card -->
-                    <div class="bg-white rounded-3xl p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 relative overflow-hidden group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out cursor-pointer" onclick="window.location.href='objectives.html'">
+                    <div class="bg-white rounded-3xl p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 relative overflow-hidden group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out cursor-pointer" onclick="window.location.href='<?= site_url('users/objectives') ?>'">​
                         <div class="flex justify-between items-start mb-8">
                             <div>
                                 <p class="text-stone-400 text-sm font-medium uppercase tracking-wider mb-2">Indice de Masse</p>
@@ -126,7 +126,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                     </div>
 
                     <!-- Wallet Card -->
-                    <div class="bg-white rounded-3xl p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col justify-between group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out cursor-pointer" onclick="window.location.href='wallet.html'">
+                    <div class="bg-white rounded-3xl p-6 md:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col justify-between group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all duration-500 ease-out cursor-pointer" onclick="window.location.href='<?= site_url('users/wallet') ?>'">​
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-stone-400 text-sm font-medium uppercase tracking-wider mb-2">Portefeuille</p>
@@ -155,7 +155,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                             </div>
                         </div>
                         <button class="w-full mt-8 py-3 rounded-xl bg-[#8C7342] text-white text-sm font-medium hover:bg-[#7A6438] transition-colors shadow-lg shadow-[#8C7342]/20">
-                            <?= $isGold ? 'Gold activé' : 'Activer pour 49€' ?>
+                            <?= $isGold ? 'Gold activé' : 'Activer pour 10.000 Ar' ?>
                         </button>
                     </div>
                 </div>
@@ -185,7 +185,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                             <h3 class="text-3xl font-light text-stone-800 mb-2 tracking-tight">Régimes suggérés</h3>
                             <p class="text-stone-400">Adaptés à votre objectif: <?= esc($objectifDescription) ?></p>
                         </div>
-                        <a href="programs.html" class="text-stone-500 hover:text-stone-800 text-sm font-medium flex items-center gap-1.5 transition-colors pb-1">
+                        <a href="<?= site_url('users/program') ?>" class="text-stone-500 hover:text-stone-800 text-sm font-medium flex items-center gap-1.5 transition-colors pb-1">
                             Voir tout 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                         </a>
@@ -194,7 +194,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <?php if (!empty($regimes)): ?>
                             <?php foreach ($regimes as $regime): ?>
-                                <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='programs.html'">
+                                <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='<?= site_url('users/program') ?>'">​
                                     <div class="relative aspect-[4/3] rounded-3xl overflow-hidden mb-5 bg-stone-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
                                         <img src="<?= esc(!empty($regime['image']) ? base_url('assets/images/' . $regime['image']) : 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80') ?>" alt="Régime" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                                         <div class="absolute top-4 right-4 px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide text-stone-800 shadow-sm">
@@ -231,7 +231,6 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
 
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script>
-        // Initialisation de Chart.js pour le graphique "Évolution du poids"
         document.addEventListener('DOMContentLoaded', function() {
             const ctx = document.getElementById('weightChart').getContext('2d');
             const currentWeight = <?= json_encode($weightValue) ?>;

@@ -50,6 +50,7 @@ class DashboardController extends BaseController
         $imc = null;
         $imcBarPercent = 0;
         if (!empty($infoSante['poids']) && !empty($infoSante['taille']) && (float) $infoSante['taille'] > 0) {
+            // taille est déjà en mètres (ex: 1.70)
             $imc = round((float) $infoSante['poids'] / (((float) $infoSante['taille']) * ((float) $infoSante['taille'])), 1);
             $imcBarPercent = max(0, min(100, (($imc - 12) / (40 - 12)) * 100));
         }
@@ -63,4 +64,5 @@ class DashboardController extends BaseController
             'imcBarPercent' => $imcBarPercent,
         ]);
     }
+    
 }

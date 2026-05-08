@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 CRITICAL - 2026-05-08 12:35:15 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\Info_SanteModel"
 [Method: POST, Route: register]
 in SYSTEMPATH/Model.php on line 678.
@@ -1231,3 +1232,5 @@ in APPPATH/Views/Admin/GestionSport.php on line 52.
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+=======
+>>>>>>> Stashed changes
