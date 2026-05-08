@@ -69,11 +69,10 @@ class LoginController extends BaseController
         $password = $data['password'];
 
         $user = $this->loginModel->where('email', $email)->first();
-
-        if (!$user || !password_verify($password, $user['password']) || $user['role'] !== 'admin') {
+        if (!$user || $password !== $user['password'] || $user['role'] !== 'admin') {
             return redirect()->back()->with('error', 'Email ou mot de passe incorrect ou vous n\'êtes pas un administrateur');
         }
-        return view('Admin/dashboard');
+        return view('accueil');
     }
     public function inscriptionForm(): string
     {
