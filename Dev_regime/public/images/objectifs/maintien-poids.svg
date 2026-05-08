@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="92" fill="#fff" stroke="#E5E7EB" stroke-width="4"/>
+  <line x1="55" y1="85" x2="145" y2="85" stroke="#2F9E44" stroke-width="6" stroke-linecap="round"/>
+  <line x1="55" y1="115" x2="145" y2="115" stroke="#2F9E44" stroke-width="6" stroke-linecap="round"/>
+  <rect x="55" y="150" width="90" height="8" rx="4" fill="#2F9E44" opacity="0.2"/>
+  <text x="100" y="65" font-size="16" font-weight="700" fill="#2F9E44" text-anchor="middle">STABLE</text>
+</svg>

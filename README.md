@@ -3,14 +3,14 @@
 ## Structure De la page
 
  - Page d' acceuil:
-    - Introduction du But de la page(comme des grands textes et introduction)
-    - Bouton grand du card pour choisir de commencer le programme
-    - et a cote celle du compte de se connecter sur la administration
+    - Introduction du But de la page(comme des grands textes et introduction)(ok)
+    - Bouton grand du card pour choisir de commencer le programme(ok)
+    - et a cote celle du compte de se connecter sur la administration(ok)
     
 ### Pour la page de l' User
 
  - Second page(page d' accomplissement de la InfoSante)
- - Troisieme page (Choix de son objectis(choix entre ses 3 objectifs))
+ - Troisieme page (Choix de son objectis(choix entre ses 3 objectifs)) donnation IMC pour le choix de son objectif
  - Quatrieme page: login de l' user pour etre dans la base pour son programme
  - Cinquieme page:
     - Affichage de son regime alimentaire et de son programme sportif qui convient a celle de son objectif choisi

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFlow - Inscription (Étape 2)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { sauge: '#8A9A5B' } } } }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#FAFAF8] text-stone-800 font-sans flex items-center justify-center min-h-screen p-6 relative overflow-hidden">
+
+    <!-- Éléments de décoration en arrière-plan -->
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#8A9A5B]/5 blur-3xl"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-stone-300/20 blur-3xl"></div>
+
+    <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] w-full max-w-lg border border-stone-100 relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-xl font-light shadow-md mb-6">N</div>
+            <h2 class="text-3xl font-light text-stone-800 tracking-tight">Votre profil corporel</h2>
+            <p class="text-stone-500 text-sm mt-3">Étape 2 sur 2 — Ces données nous permettent de calculer votre IMC et de personnaliser vos programmes.</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="flex items-center gap-2 mb-10">
+            <div class="h-1.5 flex-1 bg-[#8A9A5B] rounded-full"></div>
+            <div class="h-1.5 flex-1 bg-[#8A9A5B] rounded-full relative overflow-hidden">
+                <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+            </div>
+        </div>
+
+        <!-- Formulaire -->
+        <form action="dashboard.html" class="space-y-10">
+            
+            <!-- Poids -->
+            <div class="bg-stone-50/50 p-6 rounded-3xl border border-stone-100">
+                <div class="flex justify-between items-end mb-6">
+                    <label class="text-sm font-medium text-stone-600">Poids actuel</label>
+                    <div class="text-3xl font-light text-stone-800">
+                        <span id="poidsValue">65.0</span> 
+                        <span class="text-lg text-stone-400 font-normal">kg</span>
+                    </div>
+                </div>
+                <div class="relative px-2">
+                    <input type="range" id="poidsInput" min="40" max="150" step="0.1" value="65" 
+                           class="w-full accent-stone-800 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer" 
+                           oninput="document.getElementById('poidsValue').textContent = parseFloat(this.value).toFixed(1)" />
+                </div>
+            </div>
+
+            <!-- Taille -->
+            <div class="bg-stone-50/50 p-6 rounded-3xl border border-stone-100">
+                <div class="flex justify-between items-end mb-6">
+                    <label class="text-sm font-medium text-stone-600">Taille</label>
+                    <div class="text-3xl font-light text-stone-800">
+                        <span id="tailleValue">170</span> 
+                        <span class="text-lg text-stone-400 font-normal">cm</span>
+                    </div>
+                </div>
+                <div class="relative px-2">
+                    <input type="range" id="tailleInput" min="140" max="220" step="1" value="170" 
+                           class="w-full accent-stone-800 h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer" 
+                           oninput="document.getElementById('tailleValue').textContent = this.value" />
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-4 pt-4">
+                <a href="#" onclick="history.back(); return false;" class="px-6 py-4 rounded-2xl text-sm font-medium text-stone-500 hover:bg-stone-100 transition-colors flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </a>
+                <button type="submit" class="flex-1 py-4 rounded-2xl bg-stone-800 text-white font-medium flex items-center justify-center gap-2 hover:bg-stone-700 transition-colors shadow-xl shadow-stone-800/10">
+                    Finaliser l'inscription
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> 
+                </button>
+            </div>
+            
+        </form>
+    </div>
+
+</body>
+</html>
