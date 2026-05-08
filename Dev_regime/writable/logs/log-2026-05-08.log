@@ -1,0 +1,119 @@
+ERROR - 2026-05-08 11:45:36 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+#7 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+#8 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+#9 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/rewrite.php(44): require_once('...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+#6 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+#7 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+#8 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-05-08 11:45:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+[Method: GET, Route: users/choix_objectif]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+ERROR - 2026-05-08 11:45:49 --> Error connecting to the database: mysqli_sql_exception: Connection refused in /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+#7 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+#8 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+#9 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/rewrite.php(44): require_once('...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Connection refused in /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#5 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+#6 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+#7 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+#8 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-05-08 11:45:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Connection refused
+[Method: GET, Route: users/choix_objectif]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 5 APPPATH/Models/ObjectifModel.php(18): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH/Controllers/UserController.php(43): App\Models\ObjectifModel->getAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->choix_objectif()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:21:49 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "users/inscription_form.php"
+[Method: POST, Route: users/choix_objectif/validate]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/UserController.php(60): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\UserController->validateChoixObjectif()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/noah/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')

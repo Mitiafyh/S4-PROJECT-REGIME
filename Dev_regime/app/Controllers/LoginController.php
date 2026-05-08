@@ -86,7 +86,7 @@ class LoginController extends BaseController
         $data = [
             'username' => $this->request->getPost('username'),
             'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password')
+            'password' => $this->request->getPost('password'),
         ];
 
         $errors = RegisterValidation::validate($data);
@@ -101,6 +101,18 @@ class LoginController extends BaseController
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $passwordHash
+        ]);
+        $model = new \App\Models\Info_SanteModel();
+        $session = session();
+        $session->set('user_id', $this->loginModel->getInsertID());
+        
+
+
+        $model->saveInfoSante([
+        'user_id' => $this->loginModel->getInsertID(),
+        'poids' => $session->get('poids'),
+        'taille' => $session->get('taille'),
+        'genre' => $session->get('genre')
         ]);
         return view('accueil');
     }
