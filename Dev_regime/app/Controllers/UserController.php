@@ -57,6 +57,6 @@ class UserController extends BaseController
             $session = session();
             $session->set('objectif_id', $objectifId);
 
-        return view('users/LoginForm');
+        return view('users/InscriptionForm');
     }
 }
