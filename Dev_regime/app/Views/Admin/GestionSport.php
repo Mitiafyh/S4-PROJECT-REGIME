@@ -52,11 +52,11 @@
                                         class="text-stone-400 hover:text-white px-2 py-1 js-edit-btn"
                                         type="button"
                                         data-id="<?= esc((string) $sport['id']) ?>"
-                                        data-nom="<?= esc((string) ($sport['type'] ?? '')) ?>"
-                                        data-viande="<?= esc((string) $sport['duree']) ?>"
-                                        data-poisson="<?= esc((string) $sport['repetition']) ?>"
-                                        data-volaille="<?= esc((string) $sport['depense_calorique']) ?>"
-                                        data-constatation="<?= esc((string) $sport['image']) ?>"
+                                        data-type="<?= esc((string) ($sport['type'] ?? '')) ?>"
+                                        data-duree="<?= esc((string) $sport['duree']) ?>"
+                                        data-repetition="<?= esc((string) $sport['repetition']) ?>"
+                                        data-depense-calorique="<?= esc((string) $sport['depense_calorique']) ?>"
+                                        data-image="<?= esc((string) $sport['image']) ?>"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                     </button>
@@ -218,7 +218,7 @@
                     type: button.dataset.type || '',
                     duree: button.dataset.duree,
                     repetition: button.dataset.repetition,
-                    depense_calorique: button.dataset.depense_calorique
+                    depense_calorique: button.dataset.depenseCalorique
                 });
             });
         });

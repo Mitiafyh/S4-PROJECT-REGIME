@@ -29,6 +29,13 @@ class SportController extends BaseController
             'repetition' => $this->request->getPost('repetition'),
             'depense_calorique' => $this->request->getPost('depense_calorique'),
         ];
+
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid()) {
+            $newName = $image->getRandomName();
+            $image->move(ROOTPATH . 'public/images/sports', $newName);
+            $data['image'] = $newName;
+        }
         $model->update($id, $data);
         return redirect()->to('/gestionSport');
     }
@@ -40,13 +47,12 @@ class SportController extends BaseController
             'duree' => $this->request->getPost('duree'),
             'repetition' => $this->request->getPost('repetition'),
             'depense_calorique' => $this->request->getPost('depense_calorique'),
-            'image' => $this->request->getPost('image'),
         ];
 
-        if ($this->request->getFile('image')->isValid()) {
-            $image = $this->request->getFile('image');
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid()) {
             $newName = $image->getRandomName();
-            $image->move(ROOTPATH . 'public/images/regimes', $newName);
+            $image->move(ROOTPATH . 'public/images/sports', $newName);
             $data['image'] = $newName;
         }
 
