@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ObjectifModel;
 use App\Models\RegimeModel;
+use App\Models\SettingsModel;
 use App\Models\UserModel;
 
 class ProgramController extends BaseController
@@ -81,7 +82,9 @@ class ProgramController extends BaseController
 
         $price = (float) $regime['prixParSemaine'];
         $userBalance = (float) ($user['argent'] ?? 0);
-        $discount = !empty($user['modeGold']) ? 0.15 : 0;
+        $settingsModel = new SettingsModel();
+        $discountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
+        $discount = !empty($user['modeGold']) ? ($discountPercent / 100) : 0;
         $finalPrice = $price * (1 - $discount);
 
         if ($userBalance < $finalPrice) {

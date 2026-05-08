@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\SettingsModel;
 
 class WalletController extends BaseController
 {
@@ -29,9 +30,15 @@ class WalletController extends BaseController
             ->get()
             ->getResult();
 
+        $settingsModel = new SettingsModel();
+        $goldPrice = (float) $settingsModel->getValue('gold_price', 10000);
+        $goldDiscountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
+
         return view('users/wallet', [
             'user' => $user,
             'purchases' => $purchases,
+            'goldPrice' => $goldPrice,
+            'goldDiscountPercent' => $goldDiscountPercent,
         ]);
     }
 
@@ -62,7 +69,7 @@ class WalletController extends BaseController
             return redirect()->back()->with('error', 'Code promo invalide ou expiré.');
         }
 
-        $creditAmount = 50;
+        $creditAmount = isset($promoCode['valeur']) ? (float) $promoCode['valeur'] : 50;
 
         $userModel = new UserModel();
         $user = $userModel->getUserById($userId);
@@ -87,7 +94,9 @@ class WalletController extends BaseController
         $userModel = new UserModel();
         $user = $userModel->getUserById($userId);
 
-        $goldPrice = 10000.00;
+        $settingsModel = new SettingsModel();
+        $goldPrice = (float) $settingsModel->getValue('gold_price', 10000);
+        $goldDiscountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
 
         if (((float) $user['argent'] ?? 0) < $goldPrice) {
             return redirect()->back()->with('error', 'Solde insuffisant. Vous avez besoin de ' . number_format($goldPrice, 0, ',', '.') . ' Ar.');
@@ -99,6 +108,6 @@ class WalletController extends BaseController
             'modeGold' => true
         ]);
 
-        return redirect()->back()->with('success', 'Mode Gold activé ! Profitez de 15% de réduction.');
+        return redirect()->back()->with('success', 'Mode Gold activé ! Profitez de ' . rtrim(rtrim(number_format($goldDiscountPercent, 2, '.', ''), '0'), '.') . '% de réduction.');
     }
 }

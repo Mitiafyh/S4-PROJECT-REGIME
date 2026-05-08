@@ -23,6 +23,7 @@ CREATE TABLE Info_Sante(
 CREATE TABLE Codes(
     id int AUTO_INCREMENT PRIMARY KEY,
     code varchar(255) NOT NULL,
+    valeur float DEFAULT 50,
     status varchar(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -66,6 +67,11 @@ CREATE TABLE Regime_Activite_User_Objectif(
     FOREIGN KEY (objectif_id) REFERENCES Objectif(id) ON DELETE CASCADE
 );
 
+CREATE TABLE Settings(
+    `key` varchar(100) PRIMARY KEY,
+    `value` varchar(255) NOT NULL
+);
+
 
 
 INSERT INTO Objectif (description, image) VALUES
@@ -94,9 +100,11 @@ VALUES
 ('Musculation hypertrophie', 60, 4, 320),
 ('Musculation prise de masse', 75, 5, 420);
 
+INSERT INTO Settings (`key`, `value`)
+VALUES
+('gold_price', '10000'),
+('gold_discount_percent', '15');
+
 INSERT INTO User (username, email, password, role)
 VALUES
 ('admin', 'admin@local.com', 'adminpass', 'admin');
-
-insert into Regime (pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
-values (30, 25, 45, 0.25, 65.00, 'regime-3.svg');

@@ -25,6 +25,20 @@ $routes->post('/modifierSport/(:num)', 'SportController::modifier/$1');
 $routes->get('/supprimerSport/(:num)', 'SportController::supprimer/$1');
 $routes->post('/insertSport', 'SportController::insert');
 
+// Admin
+$routes->group('admin', function($routes) {
+    $routes->get('dashboard', 'AdminController::dashboard');
+    $routes->get('regimes', 'AdminController::regimes');
+    $routes->get('codes', 'AdminController::codes');
+    $routes->get('users', 'AdminController::users');
+    $routes->get('sports', 'AdminController::sports');
+    $routes->get('settings', 'AdminController::settings');
+    $routes->post('settings', 'AdminController::updateSettings');
+    $routes->post('users/update/(:num)', 'AdminController::updateUser/$1');
+    $routes->post('codes/create', 'AdminController::createCode');
+    $routes->get('codes/delete/(:num)', 'AdminController::deleteCode/$1');
+});
+
 
 
 // Noah

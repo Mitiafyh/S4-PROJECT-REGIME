@@ -15,6 +15,10 @@
 $userBalance = is_array($user ?? null) ? (float) ($user['argent'] ?? 0) : 0;
 $isGold = is_array($user ?? null) ? !empty($user['modeGold']) : false;
 $purchaseHistory = $purchases ?? [];
+$goldPriceValue = (float) ($goldPrice ?? 10000);
+$goldDiscountPercentValue = (float) ($goldDiscountPercent ?? 15);
+$goldPriceLabel = number_format($goldPriceValue, 0, ',', '.');
+$goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.', ''), '0'), '.');
 ?>
 
     <div class="min-h-screen flex overflow-hidden">
@@ -100,14 +104,14 @@ $purchaseHistory = $purchases ?? [];
                             
                             <h4 class="text-2xl font-light mb-2 text-[#5C4F3A]"><?= $isGold ? 'Gold Actif' : 'Passez au niveau supérieur' ?></h4>
                             <p class="text-sm leading-relaxed text-[#8C7342]">
-                                <?= $isGold ? 'Vous bénéficiez d\'une réduction de 15% sur tous les programmes!' : 'Débloquez 15% de remise immédiate sur tous les programmes pour 10.000 Ar.' ?>
+                                <?= $isGold ? 'Vous bénéficiez d\'une réduction de ' . $goldDiscountLabel . '% sur tous les programmes!' : 'Débloquez ' . $goldDiscountLabel . '% de remise immédiate sur tous les programmes pour ' . $goldPriceLabel . ' Ar.' ?>
                             </p>
                         </div>
 
                         <?php if (!$isGold): ?>
                         <form method="POST" action="<?= site_url('users/wallet/gold') ?>">
                             <button type="submit" class="w-full mt-8 py-3 rounded-xl bg-[#8C7342] text-white text-sm font-medium hover:bg-[#7A6438] transition-colors shadow-lg shadow-[#8C7342]/20 flex items-center justify-center gap-2">
-                                Souscrire pour 10.000 Ar
+                                Souscrire pour <?= $goldPriceLabel ?> Ar
                             </button>
                         </form>
                         <?php else: ?>

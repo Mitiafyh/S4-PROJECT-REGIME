@@ -10,6 +10,7 @@ class CodesModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'code',
+        'valeur',
         'status',
     ];
 
