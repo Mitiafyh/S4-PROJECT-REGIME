@@ -95,3 +95,5 @@ INSERT INTO User (username, email, password, role)
 VALUES
 ('admin', 'admin@local.com', 'adminpass', 'admin');
 
+insert into Regime (pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
+values (30, 25, 45, 0.25, 65.00, 'regime-3.svg');

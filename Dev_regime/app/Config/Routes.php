@@ -14,8 +14,8 @@ $routes->get('/loginAdmin', 'LoginController::formAdmin');
 $routes->post('/authAdmin', 'LoginController::authAdmin');
 $routes->get('/inscription', 'LoginController::inscriptionForm');
 $routes->post('/register', 'LoginController::register');
-
-
+$routes->get('/Regime', 'RegimeController::index');
+$routes->get('/ajoutRegime', 'RegimeController::ajoutForm');
 
 
 

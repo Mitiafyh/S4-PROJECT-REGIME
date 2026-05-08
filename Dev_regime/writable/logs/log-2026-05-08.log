@@ -13,3 +13,133 @@ in SYSTEMPATH/Model.php on line 678.
 10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:53:46 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RegimeModel::getAll
+[Method: GET, Route: Regime]
+in SYSTEMPATH/Model.php on line 761.
+ 1 APPPATH/Controllers/RegimeController.php(10): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:55:44 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RegimeModel::getAll
+[Method: GET, Route: Regime]
+in SYSTEMPATH/Model.php on line 761.
+ 1 APPPATH/Controllers/RegimeController.php(10): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:55:47 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RegimeModel::getAll
+[Method: GET, Route: Regime]
+in SYSTEMPATH/Model.php on line 761.
+ 1 APPPATH/Controllers/RegimeController.php(10): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:55:47 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RegimeModel::getAll
+[Method: GET, Route: Regime]
+in SYSTEMPATH/Model.php on line 761.
+ 1 APPPATH/Controllers/RegimeController.php(10): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:55:47 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\RegimeModel::getAll
+[Method: GET, Route: Regime]
+in SYSTEMPATH/Model.php on line 761.
+ 1 APPPATH/Controllers/RegimeController.php(10): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 3 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 7 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:57:35 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\Info_SanteModel"
+[Method: POST, Route: register]
+in SYSTEMPATH/Model.php on line 678.
+ 1 SYSTEMPATH/Model.php(678): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields()
+ 2 SYSTEMPATH/BaseModel.php(880): CodeIgniter\Model->doProtectFieldsForInsert()
+ 3 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 4 APPPATH/Models/Info_SanteModel.php(22): CodeIgniter\Model->insert()
+ 5 APPPATH/Controllers/LoginController.php(110): App\Models\Info_SanteModel->saveInfoSante()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\LoginController->register()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 12:57:58 --> ErrorException: Undefined array key "Pourcentage_viande"
+[Method: GET, Route: Regime]
+in APPPATH/Views/regimes/listeRegime.php on line 21.
+ 1 APPPATH/Views/regimes/listeRegime.php(21): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/regimes/listeRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 13:02:37 --> ErrorException: Undefined array key "Pourcentage_viande"
+[Method: GET, Route: Regime]
+in APPPATH/Views/regimes/listeRegime.php on line 21.
+ 1 APPPATH/Views/regimes/listeRegime.php(21): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/regimes/listeRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(12): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->index()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 13:07:53 --> ErrorException: Undefined variable $regimes
+[Method: GET, Route: ajoutRegime]
+in APPPATH/Views/regimes/ajoutRegime.php on line 11.
+ 1 APPPATH/Views/regimes/ajoutRegime.php(11): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/regimes/ajoutRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(18): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->ajoutForm()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
+CRITICAL - 2026-05-08 13:08:01 --> ErrorException: Undefined variable $regimes
+[Method: GET, Route: ajoutRegime]
+in APPPATH/Views/regimes/ajoutRegime.php on line 11.
+ 1 APPPATH/Views/regimes/ajoutRegime.php(11): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/View/View.php(240): include('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/app/Views/regimes/ajoutRegime.php')
+ 3 SYSTEMPATH/View/View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 5 APPPATH/Controllers/RegimeController.php(18): view()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\RegimeController->ajoutForm()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/fiorenantsoa/Documents/GitHub/S4-PROJECT-REGIME/Dev_regime/public/index.php')
