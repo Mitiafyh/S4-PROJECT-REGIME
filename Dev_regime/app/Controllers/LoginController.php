@@ -77,9 +77,17 @@ class LoginController extends BaseController
         session()->set('user_id', $user['id']);
         return redirect()->to('/admin/dashboard');
     }
-    public function inscriptionForm(): string
+
+    public function logout(): RedirectResponse
     {
-        return view('users/InscriptionForm');
+        session()->destroy();
+
+        return redirect()->to('/login')->with('success', 'Vous êtes déconnecté.');
+    }
+
+    public function inscriptionForm(): RedirectResponse
+    {
+        return redirect()->to('/users/infoSante');
     }
 
 

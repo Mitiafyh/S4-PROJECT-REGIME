@@ -36,65 +36,133 @@
 </head>
 <body class="bg-[#FAFAF8] text-stone-800">
 	<div class="min-h-screen flex flex-col">
-		<header class="bg-white/80 backdrop-blur border-b border-stone-100">
-			<div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-				<a href="<?= site_url('/') ?>" class="flex items-center gap-3">
-					<span class="w-10 h-10 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-sm font-semibold shadow-md">N</span>
-					<div>
-						<p class="text-xs uppercase tracking-[0.3em] text-stone-400">Espace sante</p>
-						<p class="text-lg font-medium text-stone-800">NutriFlow</p>
-					</div>
-				</a>
-				<nav class="flex items-center gap-3">
-					<a href="<?= site_url('login') ?>" class="px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-sm font-medium hover:bg-stone-50 transition-colors">
-						Mon compte
-					</a>
-				</nav>
-			</div>
-		</header>
+		<?= view('users/form_header', [
+			'headerSection' => 'Espace sante',
+			'headerTitle' => 'NutriFlow',
+			'headerSubtitle' => 'Préparez votre programme personnalisé',
+			'headerHref' => site_url('/'),
+			'headerActionLabel' => 'Mon compte',
+			'headerActionHref' => site_url('login'),
+		]) ?>
 
 		<main class="flex-1">
-			<section class="max-w-3xl mx-auto px-6 py-10 md:py-14">
-				<div class="mb-8">
+			<section class="max-w-3xl mx-auto px-6 py-8 md:py-10">
+				<div class="mb-6 md:mb-7">
 					<p class="text-xs uppercase tracking-[0.3em] text-stone-400 mb-2">Etape 1</p>
-					<h1 class="text-3xl md:text-4xl font-light text-stone-800 tracking-tight mb-3">Informations sante</h1>
+					<h1 class="text-3xl md:text-4xl font-light text-stone-800 tracking-tight mb-2">Informations sante</h1>
 					<p class="text-stone-500">Renseignez votre poids, votre taille et votre genre pour construire un programme adapte.</p>
 				</div>
 
-				<div class="bg-white border border-stone-100 rounded-3xl p-6 md:p-8 shadow-[0_10px_35px_-14px_rgba(0,0,0,0.12)]">
-					<form id="infoForm" action="<?= site_url('users/infoSante/validate') ?>" method="post" novalidate class="space-y-6">
-						<div>
-							<label for="poids" class="block text-sm font-medium text-stone-600 mb-2">Poids (kg)</label>
-							<input id="poids" name="poids" type="number" step="0.1" min="20" max="500" placeholder="Ex: 72.5" class="w-full px-4 py-3 border border-stone-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sauge/30 focus:border-sauge transition-colors">
+				<div class="bg-white border border-stone-100 rounded-3xl p-5 md:p-6 shadow-[0_10px_35px_-14px_rgba(0,0,0,0.12)]">
+					<form id="infoForm" action="<?= site_url('users/infoSante/validate') ?>" method="post" novalidate class="space-y-4 md:space-y-5">
+						<div class="grid gap-4 md:grid-cols-2">
+							<div class="rounded-[1.5rem] border border-stone-100 bg-stone-50/60 p-4 md:p-5">
+							<div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+								<div>
+									<label for="poids" class="block text-sm font-medium text-stone-600 mb-2">
+										<span class="inline-flex items-center gap-2">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-sauge">
+												<path d="M6 9h12" />
+												<path d="M8 9a4 4 0 0 1 8 0" />
+												<rect x="3" y="9" width="18" height="11" rx="4" />
+											</svg>
+											Poids
+										</span>
+									</label>
+									<p class="text-xs text-stone-400">Déplacez le curseur pour ajuster votre poids actuel.</p>
+								</div>
+								<div class="text-right">
+									<div class="text-3xl font-light text-stone-800"><span id="poidsValue">72.5</span> <span class="text-lg text-stone-400 font-normal">kg</span></div>
+									<div class="text-xs text-stone-400 mt-1">min 20 kg · max 500 kg</div>
+								</div>
+							</div>
+							<input id="poids" name="poids" type="range" min="20" max="500" step="0.1" value="72.5" class="w-full h-2 rounded-full appearance-none cursor-pointer accent-stone-800">
+							<div class="mt-4 flex justify-between text-xs text-stone-400">
+								<span>20</span>
+								<span>500</span>
+							</div>
 							<div id="err-poids" class="text-sm text-red-600 mt-2" aria-live="polite"></div>
-						</div>
+							</div>
 
-						<div>
-							<label for="taille" class="block text-sm font-medium text-stone-600 mb-2">Taille (m)</label>
-							<input id="taille" name="taille" type="number" step="0.01" min="0.5" max="3" placeholder="Ex: 1.78" class="w-full px-4 py-3 border border-stone-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sauge/30 focus:border-sauge transition-colors">
+							<div class="rounded-[1.5rem] border border-stone-100 bg-stone-50/60 p-4 md:p-5">
+							<div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+								<div>
+									<label for="taille" class="block text-sm font-medium text-stone-600 mb-2">
+										<span class="inline-flex items-center gap-2">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-sauge">
+												<path d="M12 3v18" />
+												<path d="m8 7 4-4 4 4" />
+												<path d="m8 17 4 4 4-4" />
+											</svg>
+											Taille
+										</span>
+									</label>
+									<p class="text-xs text-stone-400">Réglez la taille en mètres pour un calcul précis de l’IMC.</p>
+								</div>
+								<div class="text-right">
+									<div class="text-3xl font-light text-stone-800"><span id="tailleValue">1.78</span> <span class="text-lg text-stone-400 font-normal">m</span></div>
+									<div class="text-xs text-stone-400 mt-1">min 0,50 m · max 3,00 m</div>
+								</div>
+							</div>
+							<input id="taille" name="taille" type="range" min="0.5" max="3" step="0.01" value="1.78" class="w-full h-2 rounded-full appearance-none cursor-pointer accent-stone-800">
+							<div class="mt-4 flex justify-between text-xs text-stone-400">
+								<span>0,50</span>
+								<span>3,00</span>
+							</div>
 							<div id="err-taille" class="text-sm text-red-600 mt-2" aria-live="polite"></div>
+							</div>
 						</div>
 
 						<div>
 							<label class="block text-sm font-medium text-stone-600 mb-2">Genre</label>
-							<div class="flex flex-wrap gap-4 items-center">
-								<label class="inline-flex items-center gap-2 text-sm text-stone-700">
-									<input type="radio" name="genre" value="Homme" class="h-4 w-4 text-sauge border-stone-300 focus:ring-sauge">
-									Homme
+							<div class="grid gap-2 md:grid-cols-3">
+								<label class="group cursor-pointer">
+									<input type="radio" name="genre" value="Homme" class="sr-only peer">
+									<div class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-center transition-all duration-200 hover:border-stone-300 hover:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-sauge/30 peer-focus-visible:border-sauge peer-checked:border-stone-800 peer-checked:bg-stone-800 peer-checked:text-white">
+										<div class="mx-auto mb-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-600 group-hover:bg-stone-200 peer-checked:bg-white/10 peer-checked:text-white">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5">
+												<path d="M10 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+												<path d="M14 10h6" />
+												<path d="M17 7v6" />
+											</svg>
+										</div>
+										<div class="text-sm font-semibold">Homme</div>
+										<div class="mt-0.5 text-[11px] text-stone-400 group-hover:text-stone-500 peer-checked:text-stone-200">Profil adapté</div>
+									</div>
 								</label>
-								<label class="inline-flex items-center gap-2 text-sm text-stone-700">
-									<input type="radio" name="genre" value="Femme" class="h-4 w-4 text-sauge border-stone-300 focus:ring-sauge">
-									Femme
+								<label class="group cursor-pointer">
+									<input type="radio" name="genre" value="Femme" class="sr-only peer">
+									<div class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-center transition-all duration-200 hover:border-stone-300 hover:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-sauge/30 peer-focus-visible:border-sauge peer-checked:border-stone-800 peer-checked:bg-stone-800 peer-checked:text-white">
+										<div class="mx-auto mb-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-600 group-hover:bg-stone-200 peer-checked:bg-white/10 peer-checked:text-white">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5">
+												<circle cx="12" cy="9" r="4" />
+												<path d="M12 13v8" />
+												<path d="M9 18h6" />
+											</svg>
+										</div>
+										<div class="text-sm font-semibold">Femme</div>
+										<div class="mt-0.5 text-[11px] text-stone-400 group-hover:text-stone-500 peer-checked:text-stone-200">Profil adapté</div>
+									</div>
 								</label>
-								<label class="inline-flex items-center gap-2 text-sm text-stone-700">
-									<input type="radio" name="genre" value="Autre" class="h-4 w-4 text-sauge border-stone-300 focus:ring-sauge">
-									Autre
+								<label class="group cursor-pointer">
+									<input type="radio" name="genre" value="Autre" class="sr-only peer">
+									<div class="rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-center transition-all duration-200 hover:border-stone-300 hover:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-sauge/30 peer-focus-visible:border-sauge peer-checked:border-stone-800 peer-checked:bg-stone-800 peer-checked:text-white">
+										<div class="mx-auto mb-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-600 group-hover:bg-stone-200 peer-checked:bg-white/10 peer-checked:text-white">
+											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5">
+												<path d="M12 4v16" />
+												<path d="M8 8h8" />
+												<path d="M8 16h8" />
+											</svg>
+										</div>
+										<div class="text-sm font-semibold">Autre</div>
+										<div class="mt-0.5 text-[11px] text-stone-400 group-hover:text-stone-500 peer-checked:text-stone-200">Profil adapté</div>
+									</div>
 								</label>
 							</div>
 							<div id="err-genre" class="text-sm text-red-600 mt-2" aria-live="polite"></div>
 						</div>
 
-						<div class="flex flex-wrap gap-3">
+						<div class="flex flex-wrap gap-3 pt-1">
 							<button type="submit" class="px-6 py-3 rounded-full bg-stone-800 text-white text-sm font-semibold hover:bg-stone-700 transition-colors">Calculer mon IMC</button>
 							<a href="<?= site_url('/') ?>" class="px-6 py-3 rounded-full border border-stone-200 text-stone-600 text-sm font-semibold hover:bg-stone-50 transition-colors">Annuler</a>
 						</div>
@@ -109,21 +177,32 @@
 			var form = document.getElementById('infoForm');
 			var poids = document.getElementById('poids');
 			var taille = document.getElementById('taille');
+			var poidsValue = document.getElementById('poidsValue');
+			var tailleValue = document.getElementById('tailleValue');
 			var errPoids = document.getElementById('err-poids');
 			var errTaille = document.getElementById('err-taille');
 			var errGenre = document.getElementById('err-genre');
 
 			function clearErrors(){ errPoids.textContent=''; errTaille.textContent=''; errGenre.textContent=''; }
 
+			function syncPoids(){ poidsValue.textContent = parseFloat(poids.value).toFixed(1); }
+
+			function syncTaille(){ tailleValue.textContent = parseFloat(taille.value).toFixed(2); }
+
+			syncPoids();
+			syncTaille();
+			poids.addEventListener('input', syncPoids);
+			taille.addEventListener('input', syncTaille);
+
 			form.addEventListener('submit', function(e){
 				clearErrors();
 				var valid = true;
 
-				var p = parseFloat(poids.value);
-				if(isNaN(p) || p < 20 || p > 500){ errPoids.textContent='Veuillez indiquer un poids valide (kg).'; valid=false; }
+				var poidsValueNumber = parseFloat(poids.value);
+				if(isNaN(poidsValueNumber) || poidsValueNumber < 20 || poidsValueNumber > 500){ errPoids.textContent='Veuillez indiquer un poids valide (kg).'; valid=false; }
 
-				var t = parseFloat(taille.value);
-				if(isNaN(t) || t < 0.5 || t > 3){ errTaille.textContent='Veuillez indiquer une taille valide (m).'; valid=false; }
+				var tailleValueNumber = parseFloat(taille.value);
+				if(isNaN(tailleValueNumber) || tailleValueNumber < 0.5 || tailleValueNumber > 3){ errTaille.textContent='Veuillez indiquer une taille valide (m).'; valid=false; }
 
 				var genres = form.querySelectorAll('input[name="genre"]:checked');
 				if(genres.length === 0){ errGenre.textContent='Veuillez choisir un genre.'; valid=false; }

@@ -74,21 +74,29 @@ class ObjectivesController extends BaseController
 
         $poids = $this->request->getPost('poids');
         $taille = $this->request->getPost('taille');
-        $objectifId = $this->request->getPost('objectif');
+        $objectifId = $this->request->getPost('objectif') ?? $this->request->getPost('objectif_id');
 
-        if (empty($poids) || empty($taille) || empty($objectifId)) {
+        if (!is_numeric($poids) || !is_numeric($taille) || !is_numeric($objectifId)) {
             return redirect()->back()->with('error', 'Tous les champs doivent être remplis.');
         }
 
         $db = \Config\Database::connect();
 
-        $db->table('Info_Sante')->updateBatch([
-            [
+        $infoSanteTable = $db->table('Info_Sante');
+        $existingInfo = $infoSanteTable->where('user_id', $userId)->get()->getRowArray();
+
+        if (!empty($existingInfo)) {
+            $infoSanteTable->where('user_id', $userId)->update([
+                'poids' => $poids,
+                'taille' => $taille,
+            ]);
+        } else {
+            $infoSanteTable->insert([
                 'user_id' => $userId,
                 'poids' => $poids,
                 'taille' => $taille,
-            ]
-        ], 'user_id');
+            ]);
+        }
 
         $session->set('objectif_id', (int) $objectifId);
 

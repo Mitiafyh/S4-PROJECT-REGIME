@@ -34,67 +34,13 @@ $goldDiscountPercent = $goldDiscount * 100;
         }
       }
     </script>
-        <style>
-                @media print {
-                        body * {
-                                visibility: hidden;
-                        }
-                        #regimes-section, #regimes-section * {
-                                visibility: visible;
-                        }
-                        #regimes-section {
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
-                        }
-                }
-        </style>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <body class="bg-[#FAFAF8] text-stone-800 font-sans">
 
     <div class="min-h-screen flex overflow-hidden">
         
-        <!-- Sidebar Utilisateur -->
-        <aside class="w-64 bg-white/60 backdrop-blur-xl border-r border-stone-200/60 flex-col hidden md:flex sticky top-0 h-screen z-10">
-            <div class="p-8 pb-4">
-                <h1 class="text-xl tracking-wide font-medium text-stone-800 flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-sm font-light shadow-md">N</span>
-                    NutriFlow
-                </h1>
-            </div>
-            
-            <nav class="flex-1 px-4 py-8 space-y-1 overflow-y-auto">
-                <a href="<?= site_url('users/dashboard') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium bg-stone-800 text-white shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                    Tableau de bord
-                </a>
-                <a href="<?= site_url('users/objectives') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                    Mes objectifs
-                </a>
-                <a href="<?= site_url('users/program') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
-                    Programmes
-                </a>
-                <a href="<?= site_url('users/activities') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    Activités
-                </a>
-                <a href="<?= site_url('users/wallet') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
-                    Portefeuille
-                </a>
-            </nav>
-
-            <div class="p-4 border-t border-stone-100/60">
-                <a href="<?= site_url('login') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium text-stone-500 hover:bg-red-50 hover:text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
-                    Déconnexion
-                </a>
-            </div>
-        </aside>
+        <?= view('users/sidebar', ['activePage' => 'dashboard']) ?>
 
         <!-- Main Content -->
         <main class="flex-1 overflow-y-auto h-screen relative">
@@ -107,10 +53,10 @@ $goldDiscountPercent = $goldDiscount * 100;
                         <h2 class="text-3xl md:text-4xl font-light text-stone-800 tracking-tight">Bonjour, <?= esc($username) ?>.</h2>
                     </div>
                     <div class="flex items-center gap-4">
-                        <button class="js-print-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 text-sm font-medium hover:bg-stone-50 transition-colors shadow-sm">
+                        <a href="<?= site_url('users/dashboard/export-pdf') ?>" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 text-sm font-medium hover:bg-stone-50 transition-colors shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                             Exporter regimes suggeres (PDF)
-                        </button>
+                        </a>
                         <div class="h-10 w-10 rounded-full bg-stone-200 overflow-hidden border-2 border-white shadow-sm ring-1 ring-stone-200">
                             <img src="https://images.unsplash.com/photo-1772146345330-e35689b58b2d?w=150" alt="Profile" class="w-full h-full object-cover" />
                         </div>
@@ -220,9 +166,16 @@ $goldDiscountPercent = $goldDiscount * 100;
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <?php if (!empty($regimes)): ?>
                             <?php foreach ($regimes as $regime): ?>
+                                <?php
+                                    $imageValue = (string) ($regime['image'] ?? '');
+                                    $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
+                                    $imageSrc = $imageValue !== ''
+                                        ? ($isRemote ? $imageValue : base_url('images/regimes/' . $imageValue))
+                                        : 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80';
+                                ?>
                                 <div class="group cursor-pointer flex flex-col h-full" onclick="window.location.href='<?= site_url('users/program') ?>'">​
                                     <div class="relative aspect-[4/3] rounded-3xl overflow-hidden mb-5 bg-stone-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
-                                        <img src="<?= esc(!empty($regime['image']) ? base_url('assets/images/' . $regime['image']) : 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80') ?>" alt="Régime" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                                        <img src="<?= esc((string) $imageSrc) ?>" alt="Régime" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                                         <div class="absolute top-4 right-4 px-4 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide text-stone-800 shadow-sm">
                                             <?= esc((string) round((float) ($regime['constatation'] ?? 0), 2)) ?> kg/semaine
                                         </div>
@@ -258,13 +211,6 @@ $goldDiscountPercent = $goldDiscount * 100;
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const printButton = document.querySelector('.js-print-btn');
-            if (printButton) {
-                printButton.addEventListener('click', function() {
-                    window.print();
-                });
-            }
-
             const ctx = document.getElementById('weightChart').getContext('2d');
             const currentWeight = <?= json_encode($weightValue) ?>;
             const weightData = [
