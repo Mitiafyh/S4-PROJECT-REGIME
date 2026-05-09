@@ -1,5 +1,5 @@
 # S4-PROJECT-REGIME
-Remarques: Noah Andrianantenaina a des problemes avec son compte github du coup il a utiliser le compte de Mitia.
+## Remarques: Noah Andrianantenaina a des problemes avec son compte github du coup il a utiliser le compte de Mitia.
 ## Structure De la page
 
  - Page d' acceuil:
