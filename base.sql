@@ -27,6 +27,18 @@ CREATE TABLE Codes(
     status varchar(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE Settings(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    gold_discount float NOT NULL DEFAULT 0.15,
+    gold_price float NOT NULL DEFAULT 10000,
+    gold_currency varchar(10) NOT NULL DEFAULT 'Ar',
+    promo_default_value float NOT NULL DEFAULT 50,
+    promo_bonus_percent float NOT NULL DEFAULT 0,
+    low_balance_threshold float NOT NULL DEFAULT 0,
+    general_currency varchar(10) NOT NULL DEFAULT 'Ar',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 CREATE TABLE Regime(
     id int AUTO_INCREMENT PRIMARY KEY,
     nom varchar(255) NOT NULL,
@@ -34,6 +46,7 @@ CREATE TABLE Regime(
     pourcentage_poisson float NOT NULL,
     pourcentage_volaille float NOT NULL,
     constatation float NOT NULL,
+    duree_semaines int NOT NULL DEFAULT 4,
     prixParSemaine float NOT NULL,
     image varchar(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -67,11 +80,6 @@ CREATE TABLE Regime_Activite_User_Objectif(
     FOREIGN KEY (objectif_id) REFERENCES Objectif(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Settings(
-    `key` varchar(100) PRIMARY KEY,
-    `value` varchar(255) NOT NULL
-);
-
 
 
 INSERT INTO Objectif (description, image) VALUES
@@ -90,26 +98,20 @@ VALUES
 (1, 72.5, 1.78, 'Homme'),
 (2, 61.0, 1.68, 'Femme');
 
-INSERT INTO Regime (nom, pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, prixParSemaine, image)
+INSERT INTO Regime (nom, pourcentage_viande, pourcentage_poisson, pourcentage_volaille, constatation, duree_semaines, prixParSemaine, image)
 VALUES
-('Regime 1', 40, 15, 45, 0.35, 72.00, 'regime-1.svg'),
-('Regime 2', 35, 20, 45, 0.45, 68.50, 'regime-2.svg');
+('Regime 1', 40, 15, 45, 0.35, 4, 72.00, 'regime-1.svg'),
+('Regime 2', 35, 20, 45, 0.45, 6, 68.50, 'regime-2.svg');
 
 INSERT INTO Activite_Physique (type, duree, repetition, depense_calorique)
 VALUES
 ('Musculation hypertrophie', 60, 4, 320),
 ('Musculation prise de masse', 75, 5, 420);
 
-INSERT INTO User (username, email, password, role, genre)
-VALUES
-('admin', 'admin@local.com', 'adminpass', 'admin');
-
-
-INSERT INTO Settings (`key`, `value`)
-VALUES
-('gold_price', '10000'),
-('gold_discount_percent', '15');
-
 INSERT INTO User (username, email, password, role)
 VALUES
 ('admin', 'admin@local.com', 'adminpass', 'admin');
+
+INSERT INTO Settings (gold_discount, gold_price, gold_currency, promo_default_value, promo_bonus_percent, low_balance_threshold, general_currency)
+VALUES
+(0.15, 10000, 'Ar', 50, 0, 0, 'Ar');

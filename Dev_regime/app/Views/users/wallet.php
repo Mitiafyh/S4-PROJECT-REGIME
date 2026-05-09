@@ -15,10 +15,13 @@
 $userBalance = is_array($user ?? null) ? (float) ($user['argent'] ?? 0) : 0;
 $isGold = is_array($user ?? null) ? !empty($user['modeGold']) : false;
 $purchaseHistory = $purchases ?? [];
-$goldPriceValue = (float) ($goldPrice ?? 10000);
-$goldDiscountPercentValue = (float) ($goldDiscountPercent ?? 15);
-$goldPriceLabel = number_format($goldPriceValue, 0, ',', '.');
-$goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.', ''), '0'), '.');
+$settings = $goldSettings ?? [];
+$goldDiscount = (float) ($settings['gold_discount'] ?? 0.15);
+$goldPrice = (float) ($settings['gold_price'] ?? 10000);
+$goldCurrency = (string) ($settings['gold_currency'] ?? 'Ar');
+$generalCurrency = (string) ($settings['general_currency'] ?? 'Ar');
+$lowBalanceThreshold = (float) ($settings['low_balance_threshold'] ?? 0);
+$goldDiscountPercent = $goldDiscount * 100;
 ?>
 
     <div class="min-h-screen flex overflow-hidden">
@@ -82,7 +85,7 @@ $goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.'
                         <div class="relative z-10 flex flex-col h-full justify-between min-h-[200px]">
                             <div>
                                 <p class="text-stone-400 font-medium uppercase tracking-widest text-sm mb-2">Solde Actuel</p>
-                                <h3 class="text-5xl font-light tracking-tight"><?= number_format($userBalance, 2, '.', '') ?><span class="text-2xl text-stone-400 ml-2">€</span></h3>
+                                <h3 class="text-5xl font-light tracking-tight"><?= number_format($userBalance, 2, '.', '') ?><span class="text-2xl text-stone-400 ml-2"><?= esc($generalCurrency) ?></span></h3>
                             </div>
                             
                             <div class="flex gap-4 mt-8">
@@ -104,14 +107,14 @@ $goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.'
                             
                             <h4 class="text-2xl font-light mb-2 text-[#5C4F3A]"><?= $isGold ? 'Gold Actif' : 'Passez au niveau supérieur' ?></h4>
                             <p class="text-sm leading-relaxed text-[#8C7342]">
-                                <?= $isGold ? 'Vous bénéficiez d\'une réduction de ' . $goldDiscountLabel . '% sur tous les programmes!' : 'Débloquez ' . $goldDiscountLabel . '% de remise immédiate sur tous les programmes pour ' . $goldPriceLabel . ' Ar.' ?>
+                                <?= $isGold ? 'Vous bénéficiez d\'une réduction de ' . round($goldDiscountPercent) . '% sur tous les programmes!' : 'Débloquez ' . round($goldDiscountPercent) . '% de remise immédiate sur tous les programmes pour ' . number_format($goldPrice, 0, ',', '.') . ' ' . $goldCurrency . '.' ?>
                             </p>
                         </div>
 
                         <?php if (!$isGold): ?>
                         <form method="POST" action="<?= site_url('users/wallet/gold') ?>">
                             <button type="submit" class="w-full mt-8 py-3 rounded-xl bg-[#8C7342] text-white text-sm font-medium hover:bg-[#7A6438] transition-colors shadow-lg shadow-[#8C7342]/20 flex items-center justify-center gap-2">
-                                Souscrire pour <?= $goldPriceLabel ?> Ar
+                                Souscrire pour <?= number_format($goldPrice, 0, ',', '.') ?> <?= esc($goldCurrency) ?>
                             </button>
                         </form>
                         <?php else: ?>
@@ -129,6 +132,11 @@ $goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.'
                 <?php if (session()->getFlashdata('error')): ?>
                     <div class="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm">
                         <?= session()->getFlashdata('error') ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($lowBalanceThreshold > 0 && $userBalance < $lowBalanceThreshold): ?>
+                    <div class="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm">
+                        Votre solde est inferieur au seuil recommande de <?= number_format($lowBalanceThreshold, 2, '.', '') ?> <?= esc($generalCurrency) ?>.
                     </div>
                 <?php endif; ?>
 
@@ -171,7 +179,7 @@ $goldDiscountLabel = rtrim(rtrim(number_format($goldDiscountPercentValue, 2, '.'
                                             <p class="text-xs text-stone-400 mt-1"><?= date('d M Y', strtotime($purchase->created_at ?? 'now')) ?></p>
                                         </div>
                                     </div>
-                                    <div class="text-lg font-medium text-stone-800">-<?= number_format((float)($purchase->prixParSemaine ?? 0), 2, '.', '') ?>€</div>
+                                    <div class="text-lg font-medium text-stone-800">-<?= number_format((float)($purchase->prixParSemaine ?? 0), 2, '.', '') ?><?= esc($generalCurrency) ?></div>
                                 </div>
                                 <?php $count++; ?>
                             <?php endforeach; ?>

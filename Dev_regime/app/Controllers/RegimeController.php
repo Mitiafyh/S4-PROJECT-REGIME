@@ -29,6 +29,7 @@ class RegimeController extends BaseController
             'pourcentage_poisson' => $this->request->getPost('pourcentage_poisson'),
             'pourcentage_volaille' => $this->request->getPost('pourcentage_volaille'),
             'constatation' => $this->request->getPost('constatation'),
+            'duree_semaines' => (int) ($this->request->getPost('duree_semaines') ?? 4),
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
 
@@ -57,6 +58,7 @@ class RegimeController extends BaseController
             'pourcentage_poisson' => $this->request->getPost('pourcentage_poisson'),
             'pourcentage_volaille' => $this->request->getPost('pourcentage_volaille'),
             'constatation' => $this->request->getPost('constatation'),
+            'duree_semaines' => (int) ($this->request->getPost('duree_semaines') ?? 4),
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
 

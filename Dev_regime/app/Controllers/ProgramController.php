@@ -4,11 +4,26 @@ namespace App\Controllers;
 
 use App\Models\ObjectifModel;
 use App\Models\RegimeModel;
-use App\Models\SettingsModel;
 use App\Models\UserModel;
 
 class ProgramController extends BaseController
 {
+    private function getSettingsData(): array
+    {
+        $db = \Config\Database::connect();
+        $defaults = [
+            'gold_discount' => 0.15,
+            'general_currency' => 'Ar',
+        ];
+
+        $row = $db->table('Settings')->get()->getRowArray();
+        if (!$row) {
+            return $defaults;
+        }
+
+        return array_merge($defaults, $row);
+    }
+
     public function index(){
         $session = session();
         $userId = $session->get('user_id');
@@ -54,6 +69,11 @@ class ProgramController extends BaseController
             ->select('regime_id')
             ->get()->getResultArray();
         $userRegimeIds = array_column($userRegimeIds, 'regime_id');
+        $ownedRegimes = array_values(array_filter($allRegimes, function ($regime) use ($userRegimeIds) {
+            return in_array($regime['id'], $userRegimeIds, true);
+        }));
+
+        $settings = $this->getSettingsData();
 
         return view("/users/program",[
             'user'=>$user,
@@ -61,6 +81,8 @@ class ProgramController extends BaseController
             'regimes'=>$regimes,
             'allRegimes' => $allRegimes,
             'userRegimeIds' => $userRegimeIds,
+            'ownedRegimes' => $ownedRegimes,
+            'goldSettings' => $settings,
             ]);
     }
 
@@ -82,9 +104,8 @@ class ProgramController extends BaseController
 
         $price = (float) $regime['prixParSemaine'];
         $userBalance = (float) ($user['argent'] ?? 0);
-        $settingsModel = new SettingsModel();
-        $discountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
-        $discount = !empty($user['modeGold']) ? ($discountPercent / 100) : 0;
+        $settings = $this->getSettingsData();
+        $discount = !empty($user['modeGold']) ? (float) ($settings['gold_discount'] ?? 0.15) : 0;
         $finalPrice = $price * (1 - $discount);
 
         if ($userBalance < $finalPrice) {
@@ -105,14 +126,26 @@ class ProgramController extends BaseController
         $newBalance = $userBalance - $finalPrice;
         $userModel->update($userId, ['argent' => $newBalance]);
 
+        $activityRow = $db->table('Activite_Physique')
+            ->select('id')
+            ->orderBy('id', 'ASC')
+            ->get()
+            ->getRowArray();
+
+        if (empty($activityRow['id'])) {
+            return redirect()->back()->with('error', 'Aucune activite disponible pour lier ce regime.');
+        }
+
         // Save purchase
         $db->table('Regime_Activite_User_Objectif')->insert([
             'user_id' => $userId,
             'regime_id' => $regimeId,
+            'activite_id' => (int) $activityRow['id'],
             'objectif_id' => session()->get('objectif_id') ?? 1,
             'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->back()->with('success', 'Régime acheté avec succès!' . ($discount > 0 ? ' (Réduction Gold: ' . round($discount * 100) . '%)' : ''));
+        $discountMessage = $discount > 0 ? ' (Reduction Gold: ' . round($discount * 100) . '%)' : '';
+        return redirect()->back()->with('success', 'Regime achete avec succes!' . $discountMessage);
     }
 }

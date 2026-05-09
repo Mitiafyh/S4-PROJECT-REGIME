@@ -53,6 +53,10 @@ $salesDataValue = $salesData ?? [];
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     Utilisateurs
                 </a>
+                <a href="<?= site_url('admin/settings') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-400 hover:bg-stone-800/50 hover:text-stone-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    Parametres
+                </a>
             </nav>
 
             <div class="p-4 border-t border-stone-800">
@@ -92,7 +96,7 @@ $salesDataValue = $salesData ?? [];
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg>
                             </div>
                         </div>
-                        <h3 class="text-3xl font-semibold text-white"><?= number_format($totalRevenueValue, 2, '.', '') ?>€</h3>
+                        <h3 class="text-3xl font-semibold text-white"><?= number_format($totalRevenueValue, 2, '.', '') ?>Ar</h3>
                         <p class="text-emerald-400 text-xs font-medium mt-2">+5.4% ce mois</p>
                     </div>
 
@@ -147,7 +151,7 @@ $salesDataValue = $salesData ?? [];
                                                 <td class="px-4 py-4 text-stone-300"><?= esc((string) ($purchase['email'] ?? '')) ?></td>
                                                 <td class="px-4 py-4 text-stone-400"><?= esc((string) ($purchase['nom'] ?? 'Régime')) ?></td>
                                                 <td class="px-4 py-4 text-emerald-400 text-right font-medium">
-                                                    <?= number_format((float) ($purchase['prixParSemaine'] ?? 0), 2, '.', '') ?>€
+                                                    <?= number_format((float) ($purchase['prixParSemaine'] ?? 0), 2, '.', '') ?>Ar
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

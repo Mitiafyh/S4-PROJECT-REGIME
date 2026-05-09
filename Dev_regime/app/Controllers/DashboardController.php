@@ -8,6 +8,27 @@ use App\Models\UserModel;
 
 class DashboardController extends BaseController
 {
+    private function getSettingsData(): array
+    {
+        $db = \Config\Database::connect();
+        $defaults = [
+            'gold_discount' => 0.15,
+            'gold_price' => 10000,
+            'gold_currency' => 'Ar',
+            'promo_default_value' => 50,
+            'promo_bonus_percent' => 0,
+            'low_balance_threshold' => 0,
+            'general_currency' => 'Ar',
+        ];
+
+        $row = $db->table('Settings')->get()->getRowArray();
+        if (!$row) {
+            return $defaults;
+        }
+
+        return array_merge($defaults, $row);
+    }
+
     public function index()
     {
         $session = session();
@@ -55,6 +76,8 @@ class DashboardController extends BaseController
             $imcBarPercent = max(0, min(100, (($imc - 12) / (40 - 12)) * 100));
         }
 
+        $settings = $this->getSettingsData();
+
         return view('users/dashboard', [
             'user' => $user,
             'objectif' => $objectif,
@@ -62,6 +85,7 @@ class DashboardController extends BaseController
             'regimes' => array_slice($regimes, 0, 3),
             'imc' => $imc,
             'imcBarPercent' => $imcBarPercent,
+            'goldSettings' => $settings,
         ]);
     }
     

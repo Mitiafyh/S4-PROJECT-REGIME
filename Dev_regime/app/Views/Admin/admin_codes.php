@@ -47,6 +47,10 @@ $creditAmountValue = (int) ($creditAmount ?? 50);
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     Utilisateurs
                 </a>
+                <a href="<?= site_url('admin/settings') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-400 hover:bg-stone-800/50 hover:text-stone-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    Parametres
+                </a>
             </nav>
 
             <div class="p-4 border-t border-stone-800">
@@ -76,7 +80,7 @@ $creditAmountValue = (int) ($creditAmount ?? 50);
                             <input name="code" type="text" placeholder="Ex: NOEL20" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600">
                         </div>
                         <div class="w-32">
-                            <label class="block text-xs font-medium text-stone-500 mb-2">Valeur (€)</label>
+                            <label class="block text-xs font-medium text-stone-500 mb-2">Valeur (Ar)</label>
                             <input name="valeur" type="number" step="0.01" value="<?= $creditAmountValue ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600">
                         </div>
                         <div class="flex items-end">
@@ -106,7 +110,7 @@ $creditAmountValue = (int) ($creditAmount ?? 50);
                                             <?= esc((string) ($code['code'] ?? '')) ?>
                                         </td>
                                         <td class="px-6 py-4 font-medium <?= $isActive ? 'text-emerald-400' : 'text-stone-600' ?>">
-                                            <?= number_format((float) ($code['valeur'] ?? $creditAmountValue), 2, '.', '') ?>€
+                                            <?= number_format((float) ($code['valeur'] ?? $creditAmountValue), 2, '.', '') ?>Ar
                                         </td>
                                         <td class="px-6 py-4">
                                             <span class="px-2.5 py-1 <?= $isActive ? 'bg-emerald-500/10 text-emerald-400' : 'bg-stone-800 text-stone-400' ?> text-xs rounded-full">

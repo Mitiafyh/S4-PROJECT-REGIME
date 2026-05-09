@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <body class="bg-[#FAFAF8] text-stone-800 font-sans">
-
+<?php
+$settings = $goldSettings ?? [];
+$goldDiscount = (float) ($settings['gold_discount'] ?? 0.15);
+$generalCurrency = (string) ($settings['general_currency'] ?? 'Ar');
+?>
     <div class="min-h-screen flex overflow-hidden">
         
         <!-- Sidebar Utilisateur -->
@@ -72,6 +76,32 @@
                         endforeach;
                     endif;
                 ?>
+
+                <?php if (!empty($ownedRegimes)): ?>
+                    <div class="mb-10">
+                        <h3 class="text-xl font-medium text-stone-800 mb-4">Regimes deja achetes</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <?php foreach ($ownedRegimes as $regime): ?>
+                                <?php
+                                    $imageValue = (string) ($regime['image'] ?? '');
+                                    $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
+                                    $imageSrc = $imageValue !== ''
+                                        ? ($isRemote ? $imageValue : base_url('images/regimes/' . $imageValue))
+                                        : 'https://images.unsplash.com/photo-1598235002035-f8875f7f757e?w=300';
+                                ?>
+                                <div class="bg-white rounded-3xl border border-stone-100 p-6 flex items-center gap-4 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)]">
+                                    <div class="w-16 h-16 rounded-2xl overflow-hidden bg-stone-100">
+                                        <img src="<?= esc((string) $imageSrc) ?>" alt="<?= esc((string)($regime['nom'] ?? 'Régime')) ?>" class="w-full h-full object-cover" />
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-stone-800"><?= esc((string)($regime['nom'] ?? 'Régime')) ?></p>
+                                        <p class="text-xs text-stone-500 mt-1">Duree: <?= esc((string) ($regime['duree_semaines'] ?? 4)) ?> semaines</p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <?php if(!empty($allRegimes)): ?>
@@ -80,11 +110,17 @@
                                 $isOwned = in_array($regime['id'], $userRegimeIds ?? []);
                                 $price = (float)($regime['prixParSemaine'] ?? 0);
                                 $isGold = !empty($user['modeGold']) ? true : false;
-                                $finalPrice = $isOwned ? $price : $price * ($isGold ? 0.85 : 1);
+                                $discount = $isGold ? $goldDiscount : 0;
+                                $finalPrice = $isOwned ? $price : $price * (1 - $discount);
+                                $imageValue = (string) ($regime['image'] ?? '');
+                                $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
+                                $imageSrc = $imageValue !== ''
+                                    ? ($isRemote ? $imageValue : base_url('images/regimes/' . $imageValue))
+                                    : 'https://images.unsplash.com/photo-1598235002035-f8875f7f757e?w=800';
                             ?>
                             <div class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
                                 <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden bg-stone-100">
-                                    <img src="<?= esc((string)($regime['image'] ?? 'https://images.unsplash.com/photo-1598235002035-f8875f7f757e?w=800')) ?>" alt="<?= esc((string)($regime['nom'] ?? 'Régime')) ?>" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                                    <img src="<?= esc((string) $imageSrc) ?>" alt="<?= esc((string)($regime['nom'] ?? 'Régime')) ?>" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                                     <?php if($isOwned): ?>
                                         <div class="absolute top-4 left-4 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -95,7 +131,7 @@
                                     <div>
                                         <div class="flex justify-between items-start mb-2">
                                             <h4 class="text-xl font-medium text-stone-800"><?= esc((string)($regime['nom'] ?? 'Sans nom')) ?></h4>
-                                            <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">1 semaine</span>
+                                            <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full"><?= esc((string) ($regime['duree_semaines'] ?? 4)) ?> semaines</span>
                                         </div>
                                         <p class="text-stone-500 text-sm leading-relaxed mb-6">Régime adapté à votre profil nutritionnel.</p>
                                         <div class="space-y-2 mb-8">
@@ -109,7 +145,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                                        <span class="text-2xl font-light text-stone-800"><?= number_format($finalPrice, 2, '.', '') ?>€</span>
+                                        <span class="text-2xl font-light text-stone-800"><?= number_format($finalPrice, 2, '.', '') ?><?= esc($generalCurrency) ?></span>
                                         <?php if($isOwned): ?>
                                             <button disabled class="px-6 py-2.5 rounded-xl bg-emerald-50 text-emerald-600 font-medium text-sm cursor-default">Acquis</button>
                                         <?php else: ?>
