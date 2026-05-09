@@ -41,22 +41,14 @@
 </head>
 <body class="bg-[#FAFAF8] text-stone-800">
 	<div class="min-h-screen flex flex-col">
-		<header class="bg-white/80 backdrop-blur border-b border-stone-100">
-			<div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-				<a href="<?= site_url('/') ?>" class="flex items-center gap-3">
-					<span class="w-10 h-10 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-sm font-semibold shadow-md">N</span>
-					<div>
-						<p class="text-xs uppercase tracking-[0.3em] text-stone-400">Objectifs</p>
-						<p class="text-lg font-medium text-stone-800">NutriFlow</p>
-					</div>
-				</a>
-				<nav class="flex items-center gap-3">
-					<a href="<?= site_url('login') ?>" class="px-4 py-2 rounded-full border border-stone-200 text-stone-600 text-sm font-medium hover:bg-stone-50 transition-colors">
-						Mon compte
-					</a>
-				</nav>
-			</div>
-		</header>
+		<?= view('users/form_header', [
+			'headerSection' => 'Objectifs',
+			'headerTitle' => 'NutriFlow',
+			'headerSubtitle' => 'Choisissez votre objectif principal',
+			'headerHref' => site_url('/'),
+			'headerActionLabel' => 'Mon compte',
+			'headerActionHref' => site_url('login'),
+		]) ?>
 
 		<main class="flex-1">
 			<section class="max-w-6xl mx-auto px-6 py-10 md:py-14">

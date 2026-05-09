@@ -31,16 +31,17 @@
 <body class="bg-[#FAFAF8] font-sans text-stone-800">
     <?php $errors = session()->getFlashdata('errors') ?? []; ?>
 
+    <?= view('users/form_header', [
+        'headerSection' => 'Connexion',
+        'headerTitle' => 'NutriFlow',
+        'headerSubtitle' => 'Accédez à votre espace personnel',
+        'headerHref' => site_url('/'),
+        'headerActionLabel' => 'Créer un compte',
+        'headerActionHref' => site_url('inscription'),
+    ]) ?>
+
     <div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 selection:bg-sauge/20">
         <div class="sm:mx-auto sm:w-full sm:max-w-md flex flex-col items-center">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 20A7 7 0 0 1 14 6h5a2 2 0 0 1 2 2v5a7 7 0 0 1-14 0Z"/>
-                    <path d="M11 20v-5"/>
-                    <path d="M14 11a2 2 0 0 0-2 2"/>
-                </svg>
-            </div>
-
             <h2 class="mt-6 text-center text-3xl font-light text-stone-800 tracking-tight">
                 Bon retour sur NutriFlow
             </h2>
