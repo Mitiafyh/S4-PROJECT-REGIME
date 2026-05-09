@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 
 // Mitia
 $routes->get('/login', 'LoginController::form');
+$routes->get('/logout', 'LoginController::logout');
 $routes->post('/auth', 'LoginController::auth');
 $routes->get('/loginAdmin', 'LoginController::formAdmin');
 $routes->post('/authAdmin', 'LoginController::authAdmin');
@@ -48,6 +49,7 @@ $routes->group('users', function($routes) {
     $routes->get('choix_objectif', 'UserController::choix_objectif');
     $routes->post('choix_objectif/validate', 'UserController::validateChoixObjectif');
     $routes->get('dashboard', 'DashboardController::index');
+    $routes->get('dashboard/export-pdf', 'DashboardController::exportRegimesPdf');
     $routes->get('program', 'ProgramController::index');
     $routes->post('program/buy', 'ProgramController::buyRegime');
     $routes->get('wallet', 'WalletController::index');
