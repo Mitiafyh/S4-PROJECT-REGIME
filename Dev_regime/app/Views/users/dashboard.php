@@ -6,6 +6,12 @@ $imcValue = isset($imc) ? $imc : null;
 $imcPercentValue = isset($imcBarPercent) ? $imcBarPercent : 0;
 $objectifDescription = is_array($objectif ?? null) ? (string) ($objectif['description'] ?? 'Non défini') : 'Non défini';
 $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70) : 70;
+$settings = $goldSettings ?? [];
+$goldDiscount = (float) ($settings['gold_discount'] ?? 0.15);
+$goldPrice = (float) ($settings['gold_price'] ?? 10000);
+$goldCurrency = (string) ($settings['gold_currency'] ?? 'Ar');
+$generalCurrency = (string) ($settings['general_currency'] ?? 'Ar');
+$goldDiscountPercent = $goldDiscount * 100;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,6 +34,22 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
         }
       }
     </script>
+        <style>
+                @media print {
+                        body * {
+                                visibility: hidden;
+                        }
+                        #regimes-section, #regimes-section * {
+                                visibility: visible;
+                        }
+                        #regimes-section {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                        }
+                }
+        </style>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <body class="bg-[#FAFAF8] text-stone-800 font-sans">
@@ -87,7 +109,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                     <div class="flex items-center gap-4">
                         <button class="js-print-btn flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 text-sm font-medium hover:bg-stone-50 transition-colors shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                            Exporter PDF
+                            Exporter regimes suggeres (PDF)
                         </button>
                         <div class="h-10 w-10 rounded-full bg-stone-200 overflow-hidden border-2 border-white shadow-sm ring-1 ring-stone-200">
                             <img src="https://images.unsplash.com/photo-1772146345330-e35689b58b2d?w=150" alt="Profile" class="w-full h-full object-cover" />
@@ -130,7 +152,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-stone-400 text-sm font-medium uppercase tracking-wider mb-2">Portefeuille</p>
-                                <h3 class="text-4xl font-light text-stone-800 tracking-tight"><?= number_format($wallet, 2, '.', '') ?><span class="text-xl text-stone-400 font-normal ml-1">€</span></h3>
+                                <h3 class="text-4xl font-light text-stone-800 tracking-tight"><?= number_format($wallet, 2, '.', '') ?><span class="text-xl text-stone-400 font-normal ml-1"><?= esc($generalCurrency) ?></span></h3>
                             </div>
                             <div class="w-12 h-12 rounded-2xl bg-stone-50 text-stone-500 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
@@ -150,13 +172,17 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                                     Option Gold
                                 </div>
                                 <p class="text-sm leading-relaxed pr-4 text-[#5C4F3A]">
-                                    <?= $isGold ? 'Votre réduction Gold de 15% est active.' : 'Bénéficiez de 15% de remise sur tous les régimes.' ?>
+                                    <?= $isGold ? 'Votre reduction Gold de ' . round($goldDiscountPercent) . '% est active.' : 'Beneficiez de ' . round($goldDiscountPercent) . '% de remise sur tous les regimes.' ?>
                                 </p>
                             </div>
                         </div>
-                        <button class="w-full mt-8 py-3 rounded-xl bg-[#8C7342] text-white text-sm font-medium hover:bg-[#7A6438] transition-colors shadow-lg shadow-[#8C7342]/20">
-                            <?= $isGold ? 'Gold activé' : 'Activer pour 10.000 Ar' ?>
-                        </button>
+                        <?php if (!$isGold): ?>
+                            <a href="<?= site_url('users/wallet') ?>" class="w-full mt-8 py-3 rounded-xl bg-[#8C7342] text-white text-sm font-medium hover:bg-[#7A6438] transition-colors shadow-lg shadow-[#8C7342]/20 text-center">
+                                Activer pour <?= number_format($goldPrice, 0, ',', '.') ?> <?= esc($goldCurrency) ?>
+                            </a>
+                        <?php else: ?>
+                            <div class="w-full mt-8 py-3 rounded-xl bg-emerald-50 text-emerald-600 text-sm font-medium text-center">✓ Gold active</div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -179,7 +205,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                 </div>
 
                 <!-- Diets Section -->
-                <div class="mb-12">
+                <div class="mb-12" id="regimes-section">
                     <div class="flex justify-between items-end mb-8">
                         <div>
                             <h3 class="text-3xl font-light text-stone-800 mb-2 tracking-tight">Régimes suggérés</h3>
@@ -204,7 +230,7 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
                                     <div class="px-2 flex-1 flex flex-col">
                                         <div class="flex justify-between items-start mb-2">
                                             <h4 class="text-xl font-medium text-stone-800 group-hover:text-sauge transition-colors"><?= esc((string) ($regime['nom'] ?? ('Régime #' . $regime['id']))) ?></h4>
-                                            <span class="text-lg font-light text-stone-600"><?= number_format((float) ($regime['prixParSemaine'] ?? 0), 2, '.', '') ?>€</span>
+                                            <span class="text-lg font-light text-stone-600"><?= number_format((float) ($regime['prixParSemaine'] ?? 0), 2, '.', '') ?><?= esc($generalCurrency) ?></span>
                                         </div>
                                         <p class="text-stone-500 text-sm line-clamp-2 leading-relaxed mb-5 flex-1">
                                             Régime adapté à votre profil et à votre objectif actuel.
@@ -232,6 +258,13 @@ $weightValue = is_array($infoSante ?? null) ? (float) ($infoSante['poids'] ?? 70
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const printButton = document.querySelector('.js-print-btn');
+            if (printButton) {
+                printButton.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+
             const ctx = document.getElementById('weightChart').getContext('2d');
             const currentWeight = <?= json_encode($weightValue) ?>;
             const weightData = [

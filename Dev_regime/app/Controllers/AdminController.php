@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\CodesModel;
 use App\Models\RegimeModel;
-use App\Models\SettingsModel;
 use App\Models\SportModel;
 use App\Models\UserModel;
 
@@ -27,6 +26,28 @@ class AdminController extends BaseController
         }
 
         return $user;
+    }
+
+    private function getSettingsData(): array
+    {
+        $db = \Config\Database::connect();
+        $defaults = [
+            'gold_discount' => 0.15,
+            'gold_price' => 10000,
+            'gold_currency' => 'Ar',
+            'promo_default_value' => 50,
+            'promo_bonus_percent' => 0,
+            'low_balance_threshold' => 0,
+            'general_currency' => 'Ar',
+        ];
+
+        $row = $db->table('Settings')->get()->getRowArray();
+        if (!$row) {
+            $db->table('Settings')->insert($defaults);
+            $row = $db->table('Settings')->get()->getRowArray();
+        }
+
+        return array_merge($defaults, $row ?? []);
     }
 
     public function dashboard()
@@ -114,10 +135,11 @@ class AdminController extends BaseController
 
         $codesModel = new CodesModel();
         $codes = $codesModel->orderBy('id', 'DESC')->findAll();
+        $settings = $this->getSettingsData();
 
         return view('Admin/admin_codes', [
             'codes' => $codes,
-            'creditAmount' => 50,
+            'creditAmount' => (float) ($settings['promo_default_value'] ?? 50),
         ]);
     }
 
@@ -158,13 +180,10 @@ class AdminController extends BaseController
             return $adminUser;
         }
 
-        $settingsModel = new SettingsModel();
-        $goldPrice = (float) $settingsModel->getValue('gold_price', 10000);
-        $goldDiscountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
+        $settings = $this->getSettingsData();
 
         return view('Admin/admin_settings', [
-            'goldPrice' => $goldPrice,
-            'goldDiscountPercent' => $goldDiscountPercent,
+            'settings' => $settings,
         ]);
     }
 
@@ -175,20 +194,61 @@ class AdminController extends BaseController
             return $adminUser;
         }
 
+        $settings = $this->getSettingsData();
+
+        $discountPercent = (float) $this->request->getPost('gold_discount_percent');
+        if ($discountPercent < 0 || $discountPercent > 100) {
+            $discountPercent = ((float) $settings['gold_discount']) * 100;
+        }
+
         $goldPrice = (float) $this->request->getPost('gold_price');
-        $goldDiscountPercent = (float) $this->request->getPost('gold_discount_percent');
-
         if ($goldPrice <= 0) {
-            return redirect()->back()->with('error', 'Le prix Gold doit etre superieur a 0.');
+            $goldPrice = (float) $settings['gold_price'];
         }
 
-        if ($goldDiscountPercent < 0 || $goldDiscountPercent > 100) {
-            return redirect()->back()->with('error', 'Le pourcentage Gold doit etre entre 0 et 100.');
+        $goldCurrency = trim((string) $this->request->getPost('gold_currency'));
+        if ($goldCurrency === '') {
+            $goldCurrency = (string) $settings['gold_currency'];
         }
 
-        $settingsModel = new SettingsModel();
-        $settingsModel->setValue('gold_price', $goldPrice);
-        $settingsModel->setValue('gold_discount_percent', $goldDiscountPercent);
+        $promoDefaultValue = (float) $this->request->getPost('promo_default_value');
+        if ($promoDefaultValue <= 0) {
+            $promoDefaultValue = (float) ($settings['promo_default_value'] ?? 50);
+        }
+
+        $promoBonusPercent = (float) $this->request->getPost('promo_bonus_percent');
+        if ($promoBonusPercent < 0 || $promoBonusPercent > 100) {
+            $promoBonusPercent = (float) ($settings['promo_bonus_percent'] ?? 0);
+        }
+
+        $lowBalanceThreshold = (float) $this->request->getPost('low_balance_threshold');
+        if ($lowBalanceThreshold < 0) {
+            $lowBalanceThreshold = (float) ($settings['low_balance_threshold'] ?? 0);
+        }
+
+        $generalCurrency = trim((string) $this->request->getPost('general_currency'));
+        if ($generalCurrency === '') {
+            $generalCurrency = (string) ($settings['general_currency'] ?? 'Ar');
+        }
+
+        $payload = [
+            'gold_discount' => $discountPercent / 100,
+            'gold_price' => $goldPrice,
+            'gold_currency' => $goldCurrency,
+            'promo_default_value' => $promoDefaultValue,
+            'promo_bonus_percent' => $promoBonusPercent,
+            'low_balance_threshold' => $lowBalanceThreshold,
+            'general_currency' => $generalCurrency,
+        ];
+
+        $db = \Config\Database::connect();
+        if (!empty($settings['id'])) {
+            $db->table('Settings')
+                ->where('id', (int) $settings['id'])
+                ->update($payload);
+        } else {
+            $db->table('Settings')->insert($payload);
+        }
 
         return redirect()->back()->with('success', 'Parametres mis a jour.');
     }

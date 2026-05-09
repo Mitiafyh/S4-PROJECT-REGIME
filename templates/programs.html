@@ -1,54 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriFlow - Programmes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = { theme: { extend: { colors: { sauge: '#8A9A5B' } } } }
+        tailwind.config = { theme: { extend: { colors: { sauge: '#8A9A5B' } } } }
     </script>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="bg-[#FAFAF8] text-stone-800 font-sans">
 
     <div class="min-h-screen flex overflow-hidden">
-        
+
         <!-- Sidebar Utilisateur -->
-        <aside class="w-64 bg-white/60 backdrop-blur-xl border-r border-stone-200/60 flex-col hidden md:flex sticky top-0 h-screen z-10">
+        <aside
+            class="w-64 bg-white/60 backdrop-blur-xl border-r border-stone-200/60 flex-col hidden md:flex sticky top-0 h-screen z-10">
             <div class="p-8 pb-4">
                 <h1 class="text-xl tracking-wide font-medium text-stone-800 flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-sm font-light shadow-md">N</span>
+                    <span
+                        class="w-8 h-8 rounded-full bg-gradient-to-tr from-stone-800 to-stone-600 text-white flex items-center justify-center text-sm font-light shadow-md">N</span>
                     NutriFlow
                 </h1>
             </div>
-            
+
             <nav class="flex-1 px-4 py-8 space-y-1 overflow-y-auto">
-                <a href="dashboard.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                <a href="dashboard.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="M3 9h18" />
+                        <path d="M9 21V9" />
+                    </svg>
                     Tableau de bord
                 </a>
-                <a href="objectives.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                <a href="objectives.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
                     Mes objectifs
                 </a>
-                <a href="programs.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium bg-stone-800 text-white shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+                <a href="programs.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium bg-stone-800 text-white shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
+                        <path d="M10 2c1 .5 2 2 2 5" />
+                    </svg>
                     Programmes
                 </a>
-                <a href="activities.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <a href="activities.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
                     Activités
                 </a>
-                <a href="wallet.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                <a href="wallet.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-500 hover:bg-stone-100/50 hover:text-stone-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                        <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                    </svg>
                     Portefeuille
                 </a>
             </nav>
 
             <div class="p-4 border-t border-stone-100/60">
-                <a href="login.html" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium text-stone-500 hover:bg-red-50 hover:text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                <a href="login.html"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 text-sm font-medium text-stone-500 hover:bg-red-50 hover:text-red-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" x2="9" y1="12" y2="12" />
+                    </svg>
                     Déconnexion
                 </a>
             </div>
@@ -64,19 +102,25 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Programme 1 -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
+                    <div
+                        class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
                         <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden bg-stone-100">
-                            <img src="https://images.unsplash.com/photo-1598235002035-f8875f7f757e?w=800" alt="Diet" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                            <img src="https://images.unsplash.com/photo-1598235002035-f8875f7f757e?w=800" alt="Diet"
+                                class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                         </div>
                         <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h4 class="text-xl font-medium text-stone-800">Équilibre Végétal</h4>
-                                    <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">4 semaines</span>
+                                    <span
+                                        class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">4
+                                        semaines</span>
                                 </div>
-                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Un régime riche en fibres et nutriments essentiels, parfait pour la vitalité quotidienne.</p>
+                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Un régime riche en fibres et
+                                    nutriments essentiels, parfait pour la vitalité quotidienne.</p>
                                 <div class="space-y-2 mb-8">
-                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">Composition</p>
+                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">
+                                        Composition</p>
                                     <div class="h-2 w-full flex rounded-full overflow-hidden">
                                         <div style="width: 10%" class="bg-[#8C7342]"></div>
                                         <div style="width: 20%" class="bg-[#5A7B8C]"></div>
@@ -86,49 +130,67 @@
                                 </div>
                             </div>
                             <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                                <span class="text-2xl font-light text-stone-800">45.00€</span>
-                                <button class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
+                                <span class="text-2xl font-light text-stone-800">45.00Ar</span>
+                                <button
+                                    class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Programme 2 (Acquis) -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
+                    <div
+                        class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
                         <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden bg-stone-100">
-                            <img src="https://images.unsplash.com/photo-1766582931800-fd79665257fa?w=800" alt="Diet" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
-                            <div class="absolute top-4 left-4 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            <img src="https://images.unsplash.com/photo-1766582931800-fd79665257fa?w=800" alt="Diet"
+                                class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                            <div
+                                class="absolute top-4 left-4 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
                             </div>
                         </div>
                         <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h4 class="text-xl font-medium text-stone-800">Méditerranéen Doux</h4>
-                                    <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">8 semaines</span>
+                                    <span
+                                        class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">8
+                                        semaines</span>
                                 </div>
-                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Inspiré du régime méditerranéen avec une belle part accordée aux poissons et légumes frais.</p>
+                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Inspiré du régime méditerranéen
+                                    avec une belle part accordée aux poissons et légumes frais.</p>
                             </div>
                             <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                                <span class="text-2xl font-light text-stone-800">75.00€</span>
-                                <button class="px-6 py-2.5 rounded-xl bg-emerald-50 text-emerald-600 font-medium text-sm cursor-default">Acquis</button>
+                                <span class="text-2xl font-light text-stone-800">75.00Ar</span>
+                                <button
+                                    class="px-6 py-2.5 rounded-xl bg-emerald-50 text-emerald-600 font-medium text-sm cursor-default">Acquis</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Programme 3 -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
+                    <div
+                        class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
                         <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden bg-stone-100">
-                            <img src="https://images.unsplash.com/photo-1760888548712-6a4e1f79eb60?w=800" alt="Diet" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                            <img src="https://images.unsplash.com/photo-1760888548712-6a4e1f79eb60?w=800" alt="Diet"
+                                class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                         </div>
                         <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h4 class="text-xl font-medium text-stone-800">Vitalité Protéinée</h4>
-                                    <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">6 semaines</span>
+                                    <span
+                                        class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">6
+                                        semaines</span>
                                 </div>
-                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Axé sur les protéines maigres, idéal pour accompagner une reprise d'activité physique.</p>
+                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Axé sur les protéines maigres,
+                                    idéal pour accompagner une reprise d'activité physique.</p>
                                 <div class="space-y-2 mb-8">
-                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">Composition</p>
+                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">
+                                        Composition</p>
                                     <div class="h-2 w-full flex rounded-full overflow-hidden">
                                         <div style="width: 15%" class="bg-[#8C7342]"></div>
                                         <div style="width: 25%" class="bg-[#5A7B8C]"></div>
@@ -138,34 +200,42 @@
                                 </div>
                             </div>
                             <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                                <span class="text-2xl font-light text-stone-800">60.00€</span>
-                                <button class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
+                                <span class="text-2xl font-light text-stone-800">60.00Ar</span>
+                                <button
+                                    class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Programme 4 -->
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
+                    <div
+                        class="bg-white rounded-3xl overflow-hidden shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col md:flex-row group hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all">
                         <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto relative overflow-hidden bg-stone-100">
-                            <img src="https://images.unsplash.com/photo-1645517976245-569a91016f79?w=800" alt="Diet" class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                            <img src="https://images.unsplash.com/photo-1645517976245-569a91016f79?w=800" alt="Diet"
+                                class="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                         </div>
                         <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between items-start mb-2">
                                     <h4 class="text-xl font-medium text-stone-800">Détox Matinale</h4>
-                                    <span class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">2 semaines</span>
+                                    <span
+                                        class="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full">2
+                                        semaines</span>
                                 </div>
-                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Des bols nutritifs et des jus pressés à froid pour revitaliser le corps en douceur.</p>
+                                <p class="text-stone-500 text-sm leading-relaxed mb-6">Des bols nutritifs et des jus
+                                    pressés à froid pour revitaliser le corps en douceur.</p>
                                 <div class="space-y-2 mb-8">
-                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">Composition</p>
+                                    <p class="text-xs font-medium text-stone-400 uppercase tracking-widest mb-3">
+                                        Composition</p>
                                     <div class="h-2 w-full flex rounded-full overflow-hidden">
                                         <div style="width: 100%" class="bg-stone-300"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex items-center justify-between mt-auto pt-4 border-t border-stone-100">
-                                <span class="text-2xl font-light text-stone-800">30.00€</span>
-                                <button class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
+                                <span class="text-2xl font-light text-stone-800">30.00Ar</span>
+                                <button
+                                    class="px-6 py-2.5 rounded-xl bg-stone-800 text-white font-medium text-sm hover:bg-stone-700 transition-colors shadow-lg shadow-stone-800/10">Acheter</button>
                             </div>
                         </div>
                     </div>
@@ -176,4 +246,5 @@
     </div>
 
 </body>
+
 </html>

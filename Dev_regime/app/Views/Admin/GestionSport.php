@@ -44,8 +44,8 @@ $sports = $sports ?? [];
                     Utilisateurs
                 </a>
                 <a href="<?= site_url('admin/settings') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-400 hover:bg-stone-800/50 hover:text-stone-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
-                    Parametres avances
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    Parametres
                 </a>
             </nav>
 
@@ -59,74 +59,75 @@ $sports = $sports ?? [];
 
         <main class="flex-1 overflow-y-auto h-screen relative">
             <div class="max-w-6xl mx-auto px-6 md:px-12 py-8 md:py-12">
-            <div class="flex justify-between items-center mb-12">
-                <header>
-                    <h2 class="text-3xl font-medium text-white mb-2">Sports</h2>
-                    <p class="text-stone-400">Gerez les programmes sportifs proposes aux utilisateurs.</p>
-                </header>
-                <button onclick="openAddModal()" class="bg-[#8A9A5B] hover:bg-[#778550] text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-colors shadow-lg shadow-[#8A9A5B]/20 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Nouveau Sport
-                </button>
-            </div>
+                <div class="flex justify-between items-center mb-12">
+                    <header>
+                        <h2 class="text-3xl font-medium text-white mb-2">Sports</h2>
+                        <p class="text-stone-400">Gerez les programmes sportifs proposes aux utilisateurs.</p>
+                    </header>
+                    <button onclick="openAddModal()" class="bg-[#8A9A5B] hover:bg-[#778550] text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-colors shadow-lg shadow-[#8A9A5B]/20 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Nouveau Sport
+                    </button>
+                </div>
 
-            <div class="bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden shadow-xl shadow-black/20 relative z-0">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left">
-                        <thead class="text-xs text-stone-500 uppercase bg-stone-950">
-                            <tr>
-                                <th class="px-6 py-4">Image</th>
-                                <th class="px-6 py-4">Nom</th>
-                                <th class="px-6 py-4">Durée</th>
-                                <th class="px-6 py-4">Répétitions</th>
-                                <th class="px-6 py-4">Dépense calorique</th>
-                                <th class="px-6 py-4 text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-stone-800">
-                            <?php foreach ($sports as $sport): ?>
-                            <tr class="hover:bg-stone-800/30 transition-colors">
-                                <td class="px-6 py-4">
-                                    <?php
-                                        $imageValue = (string) ($sport['image'] ?? '');
-                                        $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
-                                        $imageSrc = $imageValue !== ''
-                                            ? ($isRemote ? $imageValue : base_url('images/sports/' . $imageValue))
-                                            : 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=200';
-                                    ?>
-                                    <div class="w-16 h-12 rounded-lg bg-stone-800 overflow-hidden">
-                                        <img src="<?= esc((string) $imageSrc) ?>" class="w-full h-full object-cover" alt="Image du sport">
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['type']) ?></td>
-                                <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['duree']) ?> min</td>
-                                <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['repetition']) ?></td>
-                                <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['depense_calorique']) ?> kcal</td>
-                                <td class="px-6 py-4 text-right">
-                                    <button
-                                        class="text-stone-400 hover:text-white px-2 py-1 js-edit-btn"
-                                        type="button"
-                                        data-id="<?= esc((string) $sport['id']) ?>"
-                                        data-type="<?= esc((string) ($sport['type'] ?? '')) ?>"
-                                        data-duree="<?= esc((string) $sport['duree']) ?>"
-                                        data-repetition="<?= esc((string) $sport['repetition']) ?>"
-                                        data-depense-calorique="<?= esc((string) $sport['depense_calorique']) ?>"
-                                        data-image="<?= esc((string) $sport['image']) ?>"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                    </button>
-                                    <a href="/supprimerSport/<?= $sport['id'] ?>" class="text-rose-400 hover:text-rose-300 px-2 py-1 inline-flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                <div class="bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden shadow-xl shadow-black/20 relative z-0">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs text-stone-500 uppercase bg-stone-950">
+                                <tr>
+                                    <th class="px-6 py-4">Image</th>
+                                    <th class="px-6 py-4">Nom</th>
+                                    <th class="px-6 py-4">Duree</th>
+                                    <th class="px-6 py-4">Repetitions</th>
+                                    <th class="px-6 py-4">Depense calorique</th>
+                                    <th class="px-6 py-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-800">
+                                <?php foreach ($sports as $sport): ?>
+                                <tr class="hover:bg-stone-800/30 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <?php
+                                            $imageValue = (string) ($sport['image'] ?? '');
+                                            $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
+                                            $imageSrc = $imageValue !== ''
+                                                ? ($isRemote ? $imageValue : base_url('images/sports/' . $imageValue))
+                                                : 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=200';
+                                        ?>
+                                        <div class="w-16 h-12 rounded-lg bg-stone-800 overflow-hidden">
+                                            <img src="<?= esc((string) $imageSrc) ?>" class="w-full h-full object-cover" alt="Image du sport">
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['type']) ?></td>
+                                    <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['duree']) ?> min</td>
+                                    <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['repetition']) ?></td>
+                                    <td class="px-6 py-4 text-stone-300"><?= esc((string) $sport['depense_calorique']) ?> kcal</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button
+                                            class="text-stone-400 hover:text-white px-2 py-1 js-edit-btn"
+                                            type="button"
+                                            data-id="<?= esc((string) $sport['id']) ?>"
+                                            data-type="<?= esc((string) ($sport['type'] ?? '')) ?>"
+                                            data-duree="<?= esc((string) $sport['duree']) ?>"
+                                            data-repetition="<?= esc((string) $sport['repetition']) ?>"
+                                            data-depense-calorique="<?= esc((string) $sport['depense_calorique']) ?>"
+                                            data-image="<?= esc((string) $sport['image']) ?>"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                        </button>
+                                        <a href="/supprimerSport/<?= $sport['id'] ?>" class="text-rose-400 hover:text-rose-300 px-2 py-1 inline-flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            </div>
         </main>
+    </div>
 
     <div id="addSportModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
         <div id="addSportModalContent" class="bg-stone-900 border border-stone-800 rounded-3xl p-8 w-full max-w-2xl transform scale-95 transition-all duration-300 shadow-2xl relative max-h-[90vh] overflow-y-auto">

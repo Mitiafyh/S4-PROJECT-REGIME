@@ -1,13 +1,20 @@
 <?php
-$goldPriceValue = (float) ($goldPrice ?? 10000);
-$goldDiscountPercentValue = (float) ($goldDiscountPercent ?? 15);
+$settingsData = $settings ?? [];
+$goldDiscount = (float) ($settingsData['gold_discount'] ?? 0.15);
+$goldPrice = (float) ($settingsData['gold_price'] ?? 10000);
+$goldCurrency = (string) ($settingsData['gold_currency'] ?? 'Ar');
+$promoDefaultValue = (float) ($settingsData['promo_default_value'] ?? 50);
+$promoBonusPercent = (float) ($settingsData['promo_bonus_percent'] ?? 0);
+$lowBalanceThreshold = (float) ($settingsData['low_balance_threshold'] ?? 0);
+$generalCurrency = (string) ($settingsData['general_currency'] ?? 'Ar');
+$goldDiscountPercent = $goldDiscount * 100;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriFlow - Parametres avances</title>
+    <title>NutriFlow - Admin Parametres</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
@@ -46,8 +53,8 @@ $goldDiscountPercentValue = (float) ($goldDiscountPercent ?? 15);
                     Utilisateurs
                 </a>
                 <a href="<?= site_url('admin/settings') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium bg-stone-800 text-white shadow-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
-                    Parametres avances
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    Parametres
                 </a>
             </nav>
 
@@ -63,32 +70,58 @@ $goldDiscountPercentValue = (float) ($goldDiscountPercent ?? 15);
             <div class="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12">
                 <header class="mb-10">
                     <h2 class="text-3xl font-medium text-white mb-2">Parametres avances</h2>
-                    <p class="text-stone-400">Ajustez les regles de l'option Gold et les valeurs globales.</p>
+                    <p class="text-stone-400">Configurez les valeurs globales du programme Gold.</p>
                 </header>
 
                 <?php if (session()->getFlashdata('success')): ?>
-                    <div class="mb-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-200 text-sm">
+                    <div class="mb-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-200 text-sm">
                         <?= session()->getFlashdata('success') ?>
                     </div>
                 <?php endif; ?>
                 <?php if (session()->getFlashdata('error')): ?>
-                    <div class="mb-6 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-200 text-sm">
+                    <div class="mb-6 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-200 text-sm">
                         <?= session()->getFlashdata('error') ?>
                     </div>
                 <?php endif; ?>
 
-                <div class="bg-stone-900 border border-stone-800 rounded-2xl p-8 shadow-xl shadow-black/20">
+                <div class="bg-stone-900 border border-stone-800 rounded-2xl p-6 md:p-8 shadow-xl shadow-black/20">
                     <form method="POST" action="<?= site_url('admin/settings') ?>" class="space-y-6">
-                        <?= csrf_field() ?>
-                        <div>
-                            <label class="block text-xs font-medium text-stone-500 mb-2">Prix Gold (Ar)</label>
-                            <input type="number" name="gold_price" min="0" step="1" value="<?= esc((string) $goldPriceValue) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Reduction Gold (%)</label>
+                                <input type="number" name="gold_discount_percent" step="0.1" min="0" max="100" value="<?= esc((string) $goldDiscountPercent) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Prix Gold</label>
+                                <input type="number" name="gold_price" step="0.01" min="0" value="<?= esc((string) $goldPrice) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Devise Gold</label>
+                                <input type="text" name="gold_currency" maxlength="10" value="<?= esc($goldCurrency) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Valeur promo par defaut</label>
+                                <input type="number" name="promo_default_value" step="0.01" min="0" value="<?= esc((string) $promoDefaultValue) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Bonus promo (%)</label>
+                                <input type="number" name="promo_bonus_percent" step="0.1" min="0" max="100" value="<?= esc((string) $promoBonusPercent) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Seuil alerte solde</label>
+                                <input type="number" name="low_balance_threshold" step="0.01" min="0" value="<?= esc((string) $lowBalanceThreshold) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-500 mb-2">Devise generale</label>
+                                <input type="text" name="general_currency" maxlength="10" value="<?= esc($generalCurrency) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-medium text-stone-500 mb-2">Pourcentage de remise Gold (%)</label>
-                            <input type="number" name="gold_discount_percent" min="0" max="100" step="0.1" value="<?= esc((string) $goldDiscountPercentValue) ?>" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+
+                        <div class="bg-stone-950 border border-stone-800 rounded-2xl p-4 text-sm text-stone-400">
+                            <p>Les valeurs s'appliquent a l'activation Gold et aux reductions sur les regimes.</p>
                         </div>
-                        <div class="flex justify-end">
+
+                        <div class="flex justify-end gap-4 pt-4 border-t border-stone-800">
                             <button type="submit" class="px-8 py-3 rounded-xl text-sm font-medium text-white bg-[#8A9A5B] hover:bg-[#778550] transition-colors shadow-lg shadow-[#8A9A5B]/20">Enregistrer</button>
                         </div>
                     </form>

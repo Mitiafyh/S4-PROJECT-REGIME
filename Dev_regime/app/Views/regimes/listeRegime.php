@@ -49,7 +49,7 @@
                                 <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['pourcentage_poisson']) ?>%</td>
                                 <td class="px-6 py-4 text-stone-300"><?= esc((string) $regime['pourcentage_volaille']) ?>%</td>
                                 <td class="px-6 py-4 text-stone-400"><?= esc((string) $regime['constatation']) ?></td>
-                                <td class="px-6 py-4 font-medium text-emerald-400"><?= esc((string) $regime['prixParSemaine']) ?>€</td>
+                                <td class="px-6 py-4 font-medium text-emerald-400"><?= esc((string) $regime['prixParSemaine']) ?>Ar</td>
                                 <td class="px-6 py-4 text-right">
                                     <button
                                         class="text-stone-400 hover:text-white px-2 py-1 js-edit-btn"

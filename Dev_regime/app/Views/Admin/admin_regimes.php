@@ -46,6 +46,10 @@ $regimesList = $regimes ?? [];
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     Utilisateurs
                 </a>
+                <a href="<?= site_url('admin/settings') ?>" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium text-stone-400 hover:bg-stone-800/50 hover:text-stone-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    Parametres
+                </a>
             </nav>
 
             <div class="p-4 border-t border-stone-800">
@@ -79,6 +83,7 @@ $regimesList = $regimes ?? [];
                                     <th class="px-6 py-4">Image</th>
                                     <th class="px-6 py-4">Titre & Description</th>
                                     <th class="px-6 py-4">Constatation</th>
+                                    <th class="px-6 py-4">Duree</th>
                                     <th class="px-6 py-4">Prix</th>
                                     <th class="px-6 py-4 text-right">Actions</th>
                                 </tr>
@@ -106,8 +111,11 @@ $regimesList = $regimes ?? [];
                                             <td class="px-6 py-4 text-stone-400">
                                                 <?= number_format((float) ($regime['constatation'] ?? 0), 2, '.', '') ?> kg/sem
                                             </td>
+                                            <td class="px-6 py-4 text-stone-400">
+                                                <?= esc((string) ($regime['duree_semaines'] ?? 4)) ?> sem
+                                            </td>
                                             <td class="px-6 py-4 font-medium text-emerald-400">
-                                                <?= number_format((float) ($regime['prixParSemaine'] ?? 0), 2, '.', '') ?>€
+                                                <?= number_format((float) ($regime['prixParSemaine'] ?? 0), 2, '.', '') ?>Ar
                                             </td>
                                             <td class="px-6 py-4 text-right">
                                                 <button
@@ -119,6 +127,7 @@ $regimesList = $regimes ?? [];
                                                     data-poisson="<?= esc((string) ($regime['pourcentage_poisson'] ?? '')) ?>"
                                                     data-volaille="<?= esc((string) ($regime['pourcentage_volaille'] ?? '')) ?>"
                                                     data-constatation="<?= esc((string) ($regime['constatation'] ?? '')) ?>"
+                                                    data-duree="<?= esc((string) ($regime['duree_semaines'] ?? 4)) ?>"
                                                     data-prix="<?= esc((string) ($regime['prixParSemaine'] ?? '')) ?>"
                                                     data-image="<?= esc((string) ($regime['image'] ?? '')) ?>"
                                                 >
@@ -132,7 +141,7 @@ $regimesList = $regimes ?? [];
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="5" class="px-6 py-6 text-stone-500">Aucun regime en base.</td>
+                                        <td colspan="6" class="px-6 py-6 text-stone-500">Aucun regime en base.</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -169,7 +178,11 @@ $regimesList = $regimes ?? [];
                         <input name="constatation" id="edit_constatation" type="number" step="0.01" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-stone-500 mb-2">Prix (EUR)</label>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Duree (semaines)</label>
+                        <input name="duree_semaines" id="edit_duree" type="number" step="1" min="1" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Prix (Ar)</label>
                         <input name="prixParSemaine" id="edit_prix" type="number" step="0.01" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                 </div>
@@ -233,7 +246,12 @@ $regimesList = $regimes ?? [];
                     </div>
 
                     <div>
-                        <label class="block text-xs font-medium text-stone-500 mb-2">Prix (EUR)</label>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Duree (semaines)</label>
+                        <input name="duree_semaines" type="number" step="1" min="1" required placeholder="4" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Prix (Ar)</label>
                         <input name="prixParSemaine" type="number" step="0.01" required placeholder="45" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                 </div>
@@ -312,6 +330,7 @@ $regimesList = $regimes ?? [];
             document.getElementById('edit_poisson').value = data.poisson;
             document.getElementById('edit_volaille').value = data.volaille;
             document.getElementById('edit_constatation').value = data.constatation;
+            document.getElementById('edit_duree').value = data.duree;
             document.getElementById('edit_prix').value = data.prix;
             document.getElementById('edit_image_url').value = data.image;
 
@@ -342,6 +361,7 @@ $regimesList = $regimes ?? [];
                     poisson: button.dataset.poisson || 0,
                     volaille: button.dataset.volaille || 0,
                     constatation: button.dataset.constatation || 0,
+                    duree: button.dataset.duree || 4,
                     prix: button.dataset.prix || 0,
                     image: button.dataset.image || ''
                 });

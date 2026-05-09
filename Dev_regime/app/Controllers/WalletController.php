@@ -3,10 +3,30 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\SettingsModel;
 
 class WalletController extends BaseController
 {
+    private function getSettingsData(): array
+    {
+        $db = \Config\Database::connect();
+        $defaults = [
+            'gold_discount' => 0.15,
+            'gold_price' => 10000,
+            'gold_currency' => 'Ar',
+            'promo_default_value' => 50,
+            'promo_bonus_percent' => 0,
+            'low_balance_threshold' => 0,
+            'general_currency' => 'Ar',
+        ];
+
+        $row = $db->table('Settings')->get()->getRowArray();
+        if (!$row) {
+            return $defaults;
+        }
+
+        return array_merge($defaults, $row);
+    }
+
     public function index()
     {
         $session = session();
@@ -30,15 +50,12 @@ class WalletController extends BaseController
             ->get()
             ->getResult();
 
-        $settingsModel = new SettingsModel();
-        $goldPrice = (float) $settingsModel->getValue('gold_price', 10000);
-        $goldDiscountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
+        $settings = $this->getSettingsData();
 
         return view('users/wallet', [
             'user' => $user,
             'purchases' => $purchases,
-            'goldPrice' => $goldPrice,
-            'goldDiscountPercent' => $goldDiscountPercent,
+            'goldSettings' => $settings,
         ]);
     }
 
@@ -69,7 +86,10 @@ class WalletController extends BaseController
             return redirect()->back()->with('error', 'Code promo invalide ou expiré.');
         }
 
-        $creditAmount = isset($promoCode['valeur']) ? (float) $promoCode['valeur'] : 50;
+        $settings = $this->getSettingsData();
+        $baseCredit = isset($promoCode['valeur']) ? (float) $promoCode['valeur'] : (float) ($settings['promo_default_value'] ?? 50);
+        $promoBonusPercent = (float) ($settings['promo_bonus_percent'] ?? 0);
+        $creditAmount = $baseCredit + ($baseCredit * ($promoBonusPercent / 100));
 
         $userModel = new UserModel();
         $user = $userModel->getUserById($userId);
@@ -77,9 +97,12 @@ class WalletController extends BaseController
 
         $userModel->update($userId, ['argent' => $newBalance]);
 
-        $db->table('Codes')->update($promoCode['id'], ['status' => 'used']);
+        $db->table('Codes')
+            ->where('id', (int) $promoCode['id'])
+            ->update(['status' => 'used']);
 
-        return redirect()->back()->with('success', "Code accepté ! +{$creditAmount}€ ajoutés à votre compte.");
+        $currency = (string) ($settings['general_currency'] ?? 'Ar');
+        return redirect()->back()->with('success', "Code accepte ! +" . number_format($creditAmount, 2, '.', '') . "{$currency} ajoutes a votre compte.");
     }
 
     public function activateGold()
@@ -94,12 +117,13 @@ class WalletController extends BaseController
         $userModel = new UserModel();
         $user = $userModel->getUserById($userId);
 
-        $settingsModel = new SettingsModel();
-        $goldPrice = (float) $settingsModel->getValue('gold_price', 10000);
-        $goldDiscountPercent = (float) $settingsModel->getValue('gold_discount_percent', 15);
+        $settings = $this->getSettingsData();
+        $goldPrice = (float) ($settings['gold_price'] ?? 10000);
+        $goldCurrency = (string) ($settings['gold_currency'] ?? 'Ar');
+        $goldDiscount = (float) ($settings['gold_discount'] ?? 0.15);
 
         if (((float) $user['argent'] ?? 0) < $goldPrice) {
-            return redirect()->back()->with('error', 'Solde insuffisant. Vous avez besoin de ' . number_format($goldPrice, 0, ',', '.') . ' Ar.');
+            return redirect()->back()->with('error', 'Solde insuffisant. Vous avez besoin de ' . number_format($goldPrice, 0, ',', '.') . ' ' . $goldCurrency . '.');
         }
 
         $newBalance = ((float) $user['argent'] ?? 0) - $goldPrice;
@@ -108,6 +132,6 @@ class WalletController extends BaseController
             'modeGold' => true
         ]);
 
-        return redirect()->back()->with('success', 'Mode Gold activé ! Profitez de ' . rtrim(rtrim(number_format($goldDiscountPercent, 2, '.', ''), '0'), '.') . '% de réduction.');
+        return redirect()->back()->with('success', 'Mode Gold active ! Profitez de ' . round($goldDiscount * 100) . '% de reduction.');
     }
 }
