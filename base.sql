@@ -88,10 +88,7 @@ INSERT INTO Objectif (description, image) VALUES
 ('Maintien du poids Avec IMC normal', 'maintien-poids.svg');
 
 -- Donnees exemple pour une prise de masse
-INSERT INTO User (username, email, password, role)
-VALUES
-('adem_b', 'adem.benali@example.com', 'motdepasse123', 'user'),
-('sara_m', 'sara.mekki@example.com', 'motdepasse123', 'user');
+
 
 INSERT INTO Info_Sante (user_id, poids, taille, genre)
 VALUES

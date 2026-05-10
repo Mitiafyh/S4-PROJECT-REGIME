@@ -52,7 +52,11 @@
                 </nav>
             </div>
         </header>
-
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="max-w-6xl mx-auto px-6 py-4 mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-900 shadow-sm">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
         <main class="flex-1">
             <section class="max-w-6xl mx-auto px-6 py-12 md:py-16">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">

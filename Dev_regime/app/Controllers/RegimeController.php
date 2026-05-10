@@ -33,11 +33,6 @@ class RegimeController extends BaseController
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
 
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
-
         if ($this->request->getFile('image')->isValid()) {
             $image = $this->request->getFile('image');
             $newName = $image->getRandomName();
@@ -47,7 +42,7 @@ class RegimeController extends BaseController
 
         $model->modifierRegime($id, $data);
 
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
     public function insert()
     {
@@ -62,11 +57,6 @@ class RegimeController extends BaseController
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
 
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
-
         if ($this->request->getFile('image')->isValid()) {
             $image = $this->request->getFile('image');
             $newName = $image->getRandomName();
@@ -76,13 +66,13 @@ class RegimeController extends BaseController
 
         $model->ajouterRegime($data);
 
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
 
     public function supprimer($id)
     {
         $model = new \App\Models\RegimeModel();
         $model->delete($id);
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
 }
