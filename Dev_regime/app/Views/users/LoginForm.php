@@ -45,6 +45,10 @@
             <h2 class="mt-6 text-center text-3xl font-light text-stone-800 tracking-tight">
                 Bon retour sur NutriFlow
             </h2>
+            <a href="<?= site_url('/') ?>" class="mt-4 inline-flex items-center gap-2 rounded-full border border-stone-300 px-4 py-2 text-sm font-semibold text-stone-600 shadow-sm hover:border-stone-400 hover:text-stone-800 transition-colors">
+                <span class="text-base">←</span>
+                Retour a l'accueil
+            </a>
         </div>
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">

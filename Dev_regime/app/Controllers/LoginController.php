@@ -80,9 +80,11 @@ class LoginController extends BaseController
 
     public function logout(): RedirectResponse
     {
-        session()->destroy();
+        $session = session();
+        $session->remove('user_id');
+        $session->setFlashdata('success', 'Vous êtes déconnecté.');
 
-        return redirect()->to('/login')->with('success', 'Vous êtes déconnecté.');
+        return redirect()->to('/');
     }
 
     public function inscriptionForm(): RedirectResponse
