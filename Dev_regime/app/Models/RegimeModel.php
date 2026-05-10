@@ -16,6 +16,7 @@ class RegimeModel extends Model
         'pourcentage_poisson',
         'pourcentage_volaille',
         'constatation',
+        'duree_semaines',
         'prixParSemaine',
         'image',
     ];

@@ -42,7 +42,7 @@ class RegimeController extends BaseController
 
         $model->modifierRegime($id, $data);
 
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
     public function insert()
     {
@@ -66,13 +66,13 @@ class RegimeController extends BaseController
 
         $model->ajouterRegime($data);
 
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
 
     public function supprimer($id)
     {
         $model = new \App\Models\RegimeModel();
         $model->delete($id);
-        return redirect()->to('/Regime');
+        return redirect()->back();
     }
 }
