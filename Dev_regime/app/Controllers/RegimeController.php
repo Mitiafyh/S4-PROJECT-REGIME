@@ -33,11 +33,6 @@ class RegimeController extends BaseController
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
 
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
-
         if ($this->request->getFile('image')->isValid()) {
             $image = $this->request->getFile('image');
             $newName = $image->getRandomName();
@@ -61,11 +56,6 @@ class RegimeController extends BaseController
             'duree_semaines' => (int) ($this->request->getPost('duree_semaines') ?? 4),
             'prixParSemaine' => $this->request->getPost('prixParSemaine'),
         ];
-
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
 
         if ($this->request->getFile('image')->isValid()) {
             $image = $this->request->getFile('image');

@@ -89,10 +89,7 @@ $sports = $sports ?? [];
                                     <td class="px-6 py-4">
                                         <?php
                                             $imageValue = (string) ($sport['image'] ?? '');
-                                            $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
-                                            $imageSrc = $imageValue !== ''
-                                                ? ($isRemote ? $imageValue : base_url('images/sports/' . $imageValue))
-                                                : 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=200';
+                                            $imageSrc = base_url('images/sports/' . $imageValue);
                                         ?>
                                         <div class="w-16 h-12 rounded-lg bg-stone-800 overflow-hidden">
                                             <img src="<?= esc((string) $imageSrc) ?>" class="w-full h-full object-cover" alt="Image du sport">
@@ -111,7 +108,6 @@ $sports = $sports ?? [];
                                             data-duree="<?= esc((string) $sport['duree']) ?>"
                                             data-repetition="<?= esc((string) $sport['repetition']) ?>"
                                             data-depense-calorique="<?= esc((string) $sport['depense_calorique']) ?>"
-                                            data-image="<?= esc((string) $sport['image']) ?>"
                                         >
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                         </button>
@@ -161,10 +157,6 @@ $sports = $sports ?? [];
                 </div>
      
                 <div>
-                    <label class="block text-xs font-medium text-stone-500 mb-2">Image (URL)</label>
-                    <input type="url" name="image_url" placeholder="https://..." class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
-                </div>
-                <div>
                     <label class="block text-xs font-medium text-stone-500 mb-2">Image (fichier)</label>
                     <input type="file" name="image" accept="image/*" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                 </div>
@@ -207,10 +199,6 @@ $sports = $sports ?? [];
                   
                 </div>
                 
-                <div>
-                    <label class="block text-xs font-medium text-stone-500 mb-2">Image (URL)</label>
-                    <input type="url" name="image_url" id="edit_image_url" placeholder="https://..." class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
-                </div>
                 <div>
                     <label class="block text-xs font-medium text-stone-500 mb-2">Image (fichier)</label>
                     <input type="file" name="image" accept="image/*" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
@@ -255,8 +243,6 @@ $sports = $sports ?? [];
             document.getElementById('edit_duree').value = data.duree;
             document.getElementById('edit_repetition').value = data.repetition;
             document.getElementById('edit_depense_calorique').value = data.depense_calorique;
-            document.getElementById('edit_image_url').value = data.image || '';
-            
 
             editModal.classList.remove('hidden');
             editModal.classList.add('flex');
@@ -283,8 +269,7 @@ $sports = $sports ?? [];
                     type: button.dataset.type || '',
                     duree: button.dataset.duree,
                     repetition: button.dataset.repetition,
-                    depense_calorique: button.dataset.depenseCalorique,
-                    image: button.dataset.image
+                    depense_calorique: button.dataset.depenseCalorique
                 });
             });
         });

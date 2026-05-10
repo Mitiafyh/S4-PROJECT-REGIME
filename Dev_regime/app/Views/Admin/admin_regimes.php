@@ -93,10 +93,7 @@ $regimesList = $regimes ?? [];
                                     <?php foreach ($regimesList as $regime): ?>
                                         <?php
                                             $imageValue = (string) ($regime['image'] ?? '');
-                                            $isRemote = preg_match('/^https?:\/\//i', $imageValue) === 1;
-                                            $imageSrc = $imageValue !== ''
-                                                ? ($isRemote ? $imageValue : base_url('images/regimes/' . $imageValue))
-                                                : 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=200';
+                                            $imageSrc = base_url('images/regimes/' . $imageValue);
                                         ?>
                                         <tr class="hover:bg-stone-800/30 transition-colors">
                                             <td class="px-6 py-4">
@@ -129,7 +126,6 @@ $regimesList = $regimes ?? [];
                                                     data-constatation="<?= esc((string) ($regime['constatation'] ?? '')) ?>"
                                                     data-duree="<?= esc((string) ($regime['duree_semaines'] ?? 4)) ?>"
                                                     data-prix="<?= esc((string) ($regime['prixParSemaine'] ?? '')) ?>"
-                                                    data-image="<?= esc((string) ($regime['image'] ?? '')) ?>"
                                                 >
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                                 </button>
@@ -163,15 +159,16 @@ $regimesList = $regimes ?? [];
             <h3 class="text-2xl font-medium text-white mb-2">Modifier un regime</h3>
             <p class="text-stone-400 text-sm mb-8">Mettez a jour les informations du regime.</p>
 
-            <form id="editRegimeForm" method="POST" class="space-y-6">
+            <form id="editRegimeForm" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <?= csrf_field() ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Titre du regime</label>
                         <input name="nom" id="edit_nom" type="text" required class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-stone-500 mb-2">Image (URL)</label>
-                        <input name="image_url" id="edit_image_url" type="url" placeholder="https://..." class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Image (fichier)</label>
+                        <input name="image" id="edit_image" type="file" accept="image/*" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-stone-500 mb-2">Constatation (kg/sem)</label>
@@ -226,7 +223,8 @@ $regimesList = $regimes ?? [];
             <p class="text-stone-400 text-sm mb-8">Remplissez les informations ci-dessous pour créer un nouveau programme diététique.</p>
             
             <!-- Form -->
-            <form method="POST" action="<?= site_url('insertRegime') ?>" class="space-y-6">
+            <form method="POST" action="<?= site_url('insertRegime') ?>" enctype="multipart/form-data" class="space-y-6">
+                <?= csrf_field() ?>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Titre -->
@@ -236,8 +234,8 @@ $regimesList = $regimes ?? [];
                     </div>
                     
                     <div>
-                        <label class="block text-xs font-medium text-stone-500 mb-2">Image (URL)</label>
-                        <input name="image_url" type="url" placeholder="https://..." class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
+                        <label class="block text-xs font-medium text-stone-500 mb-2">Image (fichier)</label>
+                        <input name="image" type="file" accept="image/*" class="w-full px-4 py-3 bg-stone-950 border border-stone-800 rounded-xl text-white focus:outline-none focus:border-stone-600 transition-colors">
                     </div>
 
                     <div>
@@ -332,8 +330,6 @@ $regimesList = $regimes ?? [];
             document.getElementById('edit_constatation').value = data.constatation;
             document.getElementById('edit_duree').value = data.duree;
             document.getElementById('edit_prix').value = data.prix;
-            document.getElementById('edit_image_url').value = data.image;
-
             editModal.classList.remove('hidden');
             editModal.classList.add('flex');
             void editModal.offsetWidth;
@@ -362,8 +358,7 @@ $regimesList = $regimes ?? [];
                     volaille: button.dataset.volaille || 0,
                     constatation: button.dataset.constatation || 0,
                     duree: button.dataset.duree || 4,
-                    prix: button.dataset.prix || 0,
-                    image: button.dataset.image || ''
+                    prix: button.dataset.prix || 0
                 });
             });
         });

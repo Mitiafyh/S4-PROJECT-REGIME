@@ -30,11 +30,6 @@ class SportController extends BaseController
             'depense_calorique' => $this->request->getPost('depense_calorique'),
         ];
 
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
-
         $image = $this->request->getFile('image');
         if ($image && $image->isValid()) {
             $newName = $image->getRandomName();
@@ -53,11 +48,6 @@ class SportController extends BaseController
             'repetition' => $this->request->getPost('repetition'),
             'depense_calorique' => $this->request->getPost('depense_calorique'),
         ];
-
-        $imageUrl = trim((string) $this->request->getPost('image_url'));
-        if ($imageUrl !== '') {
-            $data['image'] = $imageUrl;
-        }
 
         $image = $this->request->getFile('image');
         if ($image && $image->isValid()) {
