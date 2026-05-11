@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    initPasswordToggles();
 
     const form = document.querySelector("#registerForm");
     const username = document.querySelector("#username");
@@ -73,6 +74,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+function initPasswordToggles() {
+    const toggles = document.querySelectorAll("[data-password-toggle]");
+    if (!toggles.length) {
+        return;
+    }
+
+    toggles.forEach((toggle) => {
+        const targetId = toggle.getAttribute("data-password-toggle");
+        const input = targetId ? document.getElementById(targetId) : null;
+        if (!input) {
+            return;
+        }
+
+        const showIcon = toggle.querySelector('[data-icon="show"]');
+        const hideIcon = toggle.querySelector('[data-icon="hide"]');
+
+        const setVisible = (isVisible) => {
+            input.type = isVisible ? "text" : "password";
+            toggle.setAttribute("aria-pressed", isVisible ? "true" : "false");
+            toggle.setAttribute(
+                "aria-label",
+                isVisible ? "Masquer le mot de passe" : "Afficher le mot de passe"
+            );
+            if (showIcon) {
+                showIcon.style.display = isVisible ? "none" : "block";
+            }
+            if (hideIcon) {
+                hideIcon.style.display = isVisible ? "block" : "none";
+            }
+        };
+
+        setVisible(false);
+
+        toggle.addEventListener("click", () => {
+            const shouldShow = input.type === "password";
+            setVisible(shouldShow);
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+        });
+    });
+}
 
 function setError(input, errorId, message) {
     input.classList.remove("is-valid");

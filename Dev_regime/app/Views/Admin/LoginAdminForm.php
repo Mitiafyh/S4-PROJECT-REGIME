@@ -77,16 +77,40 @@
                         <label for="password" class="block text-sm font-medium text-stone-600 mb-2">
                             Mot de passe
                         </label>
-                        <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            required
-                            autocomplete="current-password"
-                            aria-describedby="passwordError"
-                            class="appearance-none block w-full px-4 py-3 border border-stone-200 rounded-xl shadow-sm placeholder-stone-400 focus:outline-none focus:ring-sauge focus:border-sauge sm:text-sm transition-colors"
-                            placeholder="adminpass"
-                        />
+                        <div class="password-field">
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                required
+                                autocomplete="current-password"
+                                aria-describedby="passwordError"
+                                class="appearance-none block w-full px-4 py-3 pr-12 border border-stone-200 rounded-xl shadow-sm placeholder-stone-400 focus:outline-none focus:ring-sauge focus:border-sauge sm:text-sm transition-colors"
+                                placeholder="adminpass"
+                            />
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-password-toggle="password"
+                                aria-label="Afficher le mot de passe"
+                                aria-pressed="false"
+                            >
+                                <span class="password-toggle__icon" data-icon="show">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </span>
+                                <span class="password-toggle__icon password-toggle__icon--hide" data-icon="hide">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M3 3l18 18"/>
+                                        <path d="M10.7 5.1a9.9 9.9 0 0 1 1.3-.1c6.5 0 10 7 10 7a19.2 19.2 0 0 1-3.3 4.3"/>
+                                        <path d="M6.6 6.6A19.2 19.2 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 3.4-.6"/>
+                                        <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
                         <div class="error-message" id="passwordError"><?= esc($errors['password'] ?? '') ?></div>
                     </div>
 
