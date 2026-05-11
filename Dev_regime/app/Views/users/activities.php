@@ -66,6 +66,8 @@ $userActivityIds = array_map('intval', is_array($userActivityIds ?? null) ? $use
                                 $activityDuree = (int) (is_array($activity) ? ($activity['duree'] ?? 0) : ($activity->duree ?? 0));
 
                                 $isSelected = in_array($activityId, $userActivityIds, true);
+                                $imageValue = (string) (is_array($activity) ? ($activity['image'] ?? '') : ($activity->image ?? ''));
+                                $imageValue = trim($imageValue);
                                 $images = [
                                     'https://images.unsplash.com/photo-1611077094679-97c56013ddd3?w=800',
                                     'https://images.unsplash.com/photo-1771270786606-f5a0e57db762?w=800',
@@ -73,7 +75,10 @@ $userActivityIds = array_map('intval', is_array($userActivityIds ?? null) ? $use
                                     'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800',
                                 ];
                                 $imageIndex = count($images) > 0 ? ($activityId > 0 ? ($activityId - 1) % count($images) : 0) : 0;
-                                $image = $images[$imageIndex] ?? $images[0];
+                                $fallbackImage = $images[$imageIndex] ?? $images[0];
+                                $image = $imageValue !== ''
+                                    ? base_url('images/sports/' . $imageValue)
+                                    : $fallbackImage;
                                 $intensite = $depenseCalorique > 400 ? 'Intense' : ($depenseCalorique > 250 ? 'Modérée' : 'Douce');
                             ?>
                             <div class="group cursor-pointer flex flex-col h-full bg-white rounded-3xl p-4 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)] border <?= $isSelected ? 'border-emerald-200 bg-emerald-50' : 'border-stone-100' ?> hover:shadow-[0_12px_40px_-4px_rgba(0,0,0,0.06)] transition-all duration-500">

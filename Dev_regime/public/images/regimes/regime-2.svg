@@ -1,7 +1,0 @@
-<svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="252" height="152" rx="16" fill="#FFF" stroke="#E5E7EB" stroke-width="4"/>
-  <rect x="40" y="60" width="40" height="40" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="4"/>
-  <rect x="100" y="55" width="40" height="50" rx="8" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="4"/>
-  <rect x="160" y="65" width="40" height="30" rx="8" fill="#FEF9C3" stroke="#EAB308" stroke-width="4"/>
-  <text x="200" y="95" font-size="14" font-weight="700" fill="#6B7280">REGIME B</text>
-</svg>

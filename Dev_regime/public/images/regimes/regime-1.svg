@@ -1,7 +1,0 @@
-<svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="252" height="152" rx="16" fill="#FFF" stroke="#E5E7EB" stroke-width="4"/>
-  <circle cx="60" cy="80" r="28" fill="#FFEDD5" stroke="#F97316" stroke-width="4"/>
-  <circle cx="120" cy="80" r="22" fill="#DCFCE7" stroke="#22C55E" stroke-width="4"/>
-  <circle cx="175" cy="80" r="18" fill="#DBEAFE" stroke="#3B82F6" stroke-width="4"/>
-  <text x="200" y="95" font-size="14" font-weight="700" fill="#6B7280">REGIME A</text>
-</svg>
