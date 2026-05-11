@@ -80,3 +80,43 @@ input.is-invalid {
 .success-message {
     color: #16a34a;
 }
+
+.password-field {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+    color: #78716c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    background-color: #f5f5f4;
+    color: #292524;
+}
+
+.password-toggle:focus {
+    outline: 2px solid #8A9A5B;
+    outline-offset: 2px;
+}
+
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.password-toggle__icon--hide {
+    display: none;
+}
